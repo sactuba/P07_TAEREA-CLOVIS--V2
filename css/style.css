@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0 100px;
+}
+
+/* HEADER */
+
+header {
+}
+
+.header--title {
+  font-family: DM Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 47px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #d04f4f;
+}
+
+/* NAV */
+
+/* BARRE DE RECHERCHE */
+.barre-de-recherche {
+  display: flex;
+}
+
+.barre-de-recherche--input {
+  height: 70px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background: #e7e7e7;
+  margin: 20px 0;
+}
+
+.barre-de-recherche--input::placeholder {
+  color: #000000;
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+/* FILTRE */
+
+.filtre {
+  display: flex;
+  column-gap: 1%;
+}
+
+.input--filtre {
+  height: 75px;
+  border: none;
+  border-radius: 5px;
+  width: 12%;
+}
+
+.input--filtre::placeholder {
+  color: #fff;
+  font-size: 18px;
+}
+
+#ingredients {
+  background: #3282f7;
+}
+
+#appareils {
+  background: #68d9a4;
+}
+
+#ustensils {
+  background: #ed6454;
+}
