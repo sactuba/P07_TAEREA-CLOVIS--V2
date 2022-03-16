@@ -75,3 +75,51 @@ header {
 #ustensils {
   background: #ed6454;
 }
+
+/* BODY */
+
+.recipes_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 30px;
+  gap: 90px;
+}
+
+.recipes_cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipes_cards--image {
+  height: 200px;
+  background: #c7bebe;
+  border-radius: 3px;
+}
+.recipes_cards--description {
+  display: flex;
+  height: 170px;
+  background: #e7e7e7;
+}
+.--description__ingredients {
+  margin: 0 0 30px 30px;
+  width: 50%;
+}
+.--description__excplication {
+  margin: 0 30px 30px 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+.--description__ingredients--title {
+  font-size: 18px;
+  background: #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.--description__ingredients--name {
+  margin: 30px 0 30px 30px;
+}
+.--description__excplication--timer {
+  margin: 30px 30px 30px 0;
+}
