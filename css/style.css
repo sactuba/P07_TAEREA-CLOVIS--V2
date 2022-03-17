@@ -49,14 +49,14 @@ header {
 
 .filtre {
   display: flex;
-  column-gap: 1%;
+  column-gap: 3%;
 }
 
 .input--filtre {
   height: 75px;
   border: none;
   border-radius: 5px;
-  width: 12%;
+  width: 115%;
 }
 
 .input--filtre::placeholder {
