@@ -7,13 +7,24 @@ body {
   margin: 0 100px;
 }
 
+.lato {
+  font-family: "Lato", sans-serif;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 /* HEADER */
 
 header {
 }
 
 .header--title {
-  font-family: DM Sans;
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
@@ -75,6 +86,25 @@ header {
 #ustensils {
   background: #ed6454;
 }
+.filtre-liste {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: #fff;
+  width: 100%;
+}
+#filtre-liste-ingredients {
+  display: none;
+  background: #3282f7;
+}
+#filtre-liste-appareils {
+  display: none;
+  background: #68d9a4;
+}
+#filtre-liste-ustensils {
+  display: none;
+  background: #ed6454;
+}
 
 /* BODY */
 
@@ -122,4 +152,8 @@ header {
 }
 .--description__excplication--timer {
   margin: 30px 30px 30px 0;
+}
+
+.liste-description {
+  list-style: none;
 }
