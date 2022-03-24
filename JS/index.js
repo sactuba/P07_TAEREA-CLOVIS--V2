@@ -7,7 +7,7 @@ function recipesCards() {
   <img src="..." alt="..." class="recipes_cards--image" />
   <h5 class="--description__ingredients--title lato">
   <span class="--description__ingredients--name">${recipes[i].name}</span>
-  <span class="--description__excplication--timer">${recipes[i].time} min</span>
+  <span class="--description__excplication--timer"><i class="fa-solid fa-clock fa-2x"></i> ${recipes[i].time} min</span>
   </h5>
   <div class="recipes_cards--description">
     <div class="--description__ingredients">

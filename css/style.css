@@ -24,6 +24,12 @@ body {
 header {
 }
 
+.header--logo {
+  text-align: center;
+}
+.fa-fire-burner {
+  color: #ed6454;
+}
 .header--title {
   font-size: 36px;
   font-style: normal;
@@ -63,11 +69,22 @@ header {
   column-gap: 3%;
 }
 
+.filtre-container--input {
+  display: flex;
+  position: relative;
+}
+
+.fa-angle-down {
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  color: #fff;
+}
 .input--filtre {
   height: 75px;
   border: none;
   border-radius: 5px;
-  width: 115%;
+  width: 240px;
 }
 
 .input--filtre::placeholder {
@@ -151,7 +168,13 @@ header {
   margin: 30px 0 30px 30px;
 }
 .--description__excplication--timer {
+  text-align: center;
   margin: 30px 30px 30px 0;
+  font-size: 20px;
+}
+
+.fa-clock {
+  margin-right: 10px;
 }
 
 .liste-description {
