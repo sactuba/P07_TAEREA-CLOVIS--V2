@@ -43,26 +43,24 @@ function ingredientsInput() {
   );
   const inputIng = document.getElementById("ingredients");
   inputIng.addEventListener("click", function () {
+    let ingredients = [];
     filtreListeIngredients.style.display = "grid";
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ingredients.length; j++) {
-        let listeItems = `
-        <li onclick="createDiv(${recipes[i].ingredients[j].ingredient})">${recipes[i].ingredients[j].ingredient}</li>
-        `;
-        filtreListeIngredients.innerHTML += listeItems;
-        //listeItems.addEventListener("click", createDiv(listeItems));
+        ingredients.push(recipes[i].ingredients[j].ingredient);
       }
-      /*       let test = new Set(recipes[i].ingredients);
-      console.log(test);
-      test.forEach((ing) => {
-        let displayIng = `
-        <li>${ing.ingredient}</li>
-        `;
-        filtreListeIngredients.innerHTML += displayIng;
-      }); */
     }
+    let ingredientsArray = Array.from(new Set(ingredients));
+    console.log(ingredientsArray);
+    ingredientsArray.forEach(function (ingredients) {
+      let listeItems = `
+      <li onclick="createDiv('${ingredients}')">${ingredients}</li>
+      `;
+      // filtreListeIngredients.innerHTML = "";
+      filtreListeIngredients.innerHTML += listeItems;
+    });
   });
-  body.addEventListener("blur", function () {
+  filtreListeIngredients.addEventListener("click", function () {
     filtreListeIngredients.innerHTML = "";
     filtreListeIngredients.style.display = "none";
   });
@@ -76,17 +74,21 @@ function ingredientsAppareils() {
   );
   const inputAppareils = document.getElementById("appareils");
   inputAppareils.addEventListener("click", function () {
-    filtreListeAppareils.style.display = "block";
+    let appliance = [];
+    filtreListeAppareils.style.display = "grid";
     for (let i = 0; i < recipes.length; i++) {
-      for (let j = 0; j < recipes[i].ingredients.length; j++) {
-        let listeItems = `
-      <li>${recipes[i].appliance}</li>
-      `;
-        filtreListeAppareils.innerHTML += listeItems;
-      }
+      appliance.push(recipes[i].appliance);
     }
+    let appareilsArray = Array.from(new Set(appliance));
+    console.log(appareilsArray);
+    appareilsArray.forEach(function (appliance) {
+      let listeItems = `
+    <li onclick="createDiv('${appliance}')">${appliance}</li>
+    `;
+      filtreListeAppareils.innerHTML += listeItems;
+    });
   });
-  inputAppareils.addEventListener("blur", function () {
+  filtreListeAppareils.addEventListener("click", function () {
     filtreListeAppareils.innerHTML = "";
     filtreListeAppareils.style.display = "none ";
   });
@@ -100,17 +102,24 @@ function ingredientsUstensils() {
   );
   const inputUstensils = document.getElementById("ustensils");
   inputUstensils.addEventListener("click", function () {
+    let ustensils = [];
+    filtreListeUstensils.style.display = "grid";
     for (let i = 0; i < recipes.length; i++) {
-      filtreListeUstensils.style.display = "block";
-      for (let j = 0; j < recipes[i].ingredients.length; j++) {
-        let listeItems = `
-      <li>${recipes[i].ustensils}</li>
-      `;
-        filtreListeUstensils.innerHTML += listeItems;
+      for (let j = 0; j < recipes[i].ustensils.length; j++) {
+        console.log(recipes[i].ustensils[j]);
+        ustensils.push(recipes[i].ustensils);
       }
     }
+    let ustensilsArray = Array.from(new Set(ustensils));
+    console.log(ustensilsArray);
+    ustensilsArray.forEach(function (ustensils) {
+      let listeItems = `
+      <li onclick="createDiv('${ustensils}')">${ustensils}</li>
+      `;
+      filtreListeUstensils.innerHTML += listeItems;
+    });
   });
-  inputUstensils.addEventListener("blur", function () {
+  filtreListeUstensils.addEventListener("click", function () {
     filtreListeUstensils.innerHTML = "";
     filtreListeUstensils.style.display = "none ";
   });
@@ -120,8 +129,6 @@ ingredientsUstensils();
 
 function createDiv(value) {
   let containerArticle = document.getElementById("liste-findArticles");
-  //console.log(containerArticle);
   const element = "<li>" + value + "</li>";
-  //  const element = `<li>value</li>`;
   containerArticle.innerHTML += element;
 }

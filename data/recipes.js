@@ -60,7 +60,7 @@ const recipes = [
         quantity: 5,
       },
       {
-        ingredient: "Lait de Coco",
+        ingredient: "Lait de coco",
         quantity: 100,
         unit: "ml",
       },
@@ -294,7 +294,7 @@ const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "farine",
+        ingredient: "Farine",
         quantity: 90,
         unit: "grammes",
       },
@@ -1553,7 +1553,7 @@ const recipes = [
         unit: "grammes",
       },
       {
-        ingredient: "farine",
+        ingredient: "Farine",
         quantity: 40,
         unit: "grammes",
       },
