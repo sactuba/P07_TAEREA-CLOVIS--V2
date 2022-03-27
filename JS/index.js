@@ -1,3 +1,4 @@
+/* Afficher les recettes */
 function recipesCards() {
   let container = document.getElementById("recipes_container");
   for (let i = 0; i < recipes.length; i++) {
@@ -37,26 +38,29 @@ function recipesCards() {
 
 recipesCards();
 
+/* Fonctions  pour afficher touts les ingrdients par input */
+
 function ingredientsInput() {
   const filtreListeIngredients = document.getElementById(
     "filtre-liste-ingredients"
   );
   const inputIng = document.getElementById("ingredients");
+  filtreListeIngredients.style.display = "grid";
+  const ListeIngredients = document.getElementsByClassName("ingredientItem");
   inputIng.addEventListener("click", function () {
     let ingredients = [];
-    filtreListeIngredients.style.display = "grid";
+    let index = 0;
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ingredients.length; j++) {
         ingredients.push(recipes[i].ingredients[j].ingredient);
       }
     }
     let ingredientsArray = Array.from(new Set(ingredients));
-    console.log(ingredientsArray);
+    //console.log(ingredientsArray);
     ingredientsArray.forEach(function (ingredients) {
       let listeItems = `
-      <li onclick="createDiv('${ingredients}')">${ingredients}</li>
+      <li class="ingredientItem" onclick="createDiv('${ingredients}', 'ingredientItem', ${index++})">${ingredients}</li>
       `;
-      // filtreListeIngredients.innerHTML = "";
       filtreListeIngredients.innerHTML += listeItems;
     });
   });
@@ -83,7 +87,7 @@ function ingredientsAppareils() {
     console.log(appareilsArray);
     appareilsArray.forEach(function (appliance) {
       let listeItems = `
-    <li onclick="createDiv('${appliance}')">${appliance}</li>
+    <li onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>
     `;
       filtreListeAppareils.innerHTML += listeItems;
     });
@@ -114,7 +118,7 @@ function ingredientsUstensils() {
     console.log(ustensilsArray);
     ustensilsArray.forEach(function (ustensils) {
       let listeItems = `
-      <li onclick="createDiv('${ustensils}')">${ustensils}</li>
+      <li onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>
       `;
       filtreListeUstensils.innerHTML += listeItems;
     });
@@ -127,8 +131,38 @@ function ingredientsUstensils() {
 
 ingredientsUstensils();
 
-function createDiv(value) {
+/* Fonction pour afficher les items de recherche */
+
+function createDiv(value, style, idIndex) {
   let containerArticle = document.getElementById("liste-findArticles");
-  const element = "<li>" + value + "</li>";
-  containerArticle.innerHTML += element;
+  const item =
+    '<li id="' +
+    idIndex +
+    '" class="lato ' +
+    style +
+    '">' +
+    value +
+    '<i onclick="deleteDiv(' +
+    idIndex +
+    ')" class="fa-solid fa-xmark fa-2x"></i></li>';
+  containerArticle.innerHTML += item;
+}
+
+function deleteDiv(element) {
+  let elt = document.getElementById(element);
+  elt.remove();
+}
+
+function rechercher() {
+  let input = document.getElementById("barre-de-recherche").value;
+  input = input.toLowerCase();
+  let x = document.getElementsByClassName("ingredientItem");
+
+  for (i = 0; i < x.length; i++) {
+    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+      x[i].style.display = "none";
+    } else {
+      x[i].style.display = "list-item";
+    }
+  }
 }

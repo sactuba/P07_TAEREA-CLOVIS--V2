@@ -63,7 +63,32 @@ header {
 }
 
 /* FILTRE */
+.liste-findArticles {
+  list-style: none;
+  display: flex;
+}
 
+.liste-findArticles li {
+  width: 150px;
+  height: 40px;
+  display: none;
+  justify-content: space-between;
+  border: none;
+  margin: 10px 10px 10px 0;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.ingredientItem {
+  background: #3282f7;
+}
+.appareilItem {
+  background: #68d9a4;
+}
+.ustensilItem {
+  background: #ed6454;
+}
 .filtre {
   display: flex;
   column-gap: 3%;
@@ -81,10 +106,12 @@ header {
   color: #fff;
 }
 .input--filtre {
+  font-size: 20px;
   height: 75px;
   border: none;
   border-radius: 5px;
   width: 240px;
+  color: #fff;
 }
 
 .input--filtre::placeholder {
@@ -111,7 +138,6 @@ header {
   width: 100%;
 }
 #filtre-liste-ingredients {
-  display: none;
   background: #3282f7;
 }
 #filtre-liste-appareils {
