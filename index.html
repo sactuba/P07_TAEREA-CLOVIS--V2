@@ -42,9 +42,14 @@
               id="ingredients"
               class="input--filtre"
               placeholder="Ingredients"
-              onkeyup="rechercher()"
+              onkeyup="rechercherIngredient()"
             />
-            <i class="fa-solid fa-angle-down fa-2x"></i>
+            <div id="ingredient-arrow" class="arrow-input">
+              <i
+                id="ingredient-arrow-id"
+                class="fa-solid fa-angle-down fa-2x"
+              ></i>
+            </div>
           </div>
           <ul id="filtre-liste-ingredients" class="filtre-liste lato"></ul>
         </div>
@@ -56,8 +61,14 @@
               id="appareils"
               class="input--filtre"
               placeholder="Appareils"
+              onkeyup="rechercherAppareil()"
             />
-            <i class="fa-solid fa-angle-down fa-2x"></i>
+            <div id="appareil-arrow" class="arrow-input">
+              <i
+                id="appareil-arrow-id"
+                class="fa-solid fa-angle-down fa-2x"
+              ></i>
+            </div>
           </div>
           <ul id="filtre-liste-appareils" class="filtre-liste lato"></ul>
         </div>
@@ -69,8 +80,14 @@
               id="ustensils"
               class="input--filtre"
               placeholder="Ustensils"
+              onkeyup="rechercherUstensils()"
             />
-            <i class="fa-solid fa-angle-down fa-2x"></i>
+            <div id="ustensil-arrow" class="arrow-input">
+              <i
+                id="ustensil-arrow-id"
+                class="fa-solid fa-angle-down fa-2x"
+              ></i>
+            </div>
           </div>
           <ul id="filtre-liste-ustensils" class="filtre-liste lato"></ul>
         </div>

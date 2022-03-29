@@ -22,7 +22,6 @@ function recipesCards() {
     container.innerHTML += cards;
 
     let liste = document.getElementById("liste-ing-" + recipes[i].id);
-    //console.log(liste);
 
     recipes[i].ingredients.forEach((ing) => {
       let displayIng = `
@@ -44,19 +43,20 @@ function ingredientsInput() {
   const filtreListeIngredients = document.getElementById(
     "filtre-liste-ingredients"
   );
+  const arrow = document.getElementById("ingredient-arrow-id");
+
   const inputIng = document.getElementById("ingredients");
-  filtreListeIngredients.style.display = "grid";
   const ListeIngredients = document.getElementsByClassName("ingredientItem");
   inputIng.addEventListener("click", function () {
     let ingredients = [];
     let index = 0;
+    arrow.style.transform = "rotate(180deg)";
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ingredients.length; j++) {
         ingredients.push(recipes[i].ingredients[j].ingredient);
       }
     }
     let ingredientsArray = Array.from(new Set(ingredients));
-    //console.log(ingredientsArray);
     ingredientsArray.forEach(function (ingredients) {
       let listeItems = `
       <li class="ingredientItem" onclick="createDiv('${ingredients}', 'ingredientItem', ${index++})">${ingredients}</li>
@@ -66,75 +66,81 @@ function ingredientsInput() {
   });
   filtreListeIngredients.addEventListener("click", function () {
     filtreListeIngredients.innerHTML = "";
-    filtreListeIngredients.style.display = "none";
+    arrow.style.transform = "rotate(360deg)";
   });
 }
 
 ingredientsInput();
 
-function ingredientsAppareils() {
+function appareilsInput() {
   const filtreListeAppareils = document.getElementById(
     "filtre-liste-appareils"
   );
+  const arrow = document.getElementById("appareil-arrow-id");
   const inputAppareils = document.getElementById("appareils");
   inputAppareils.addEventListener("click", function () {
     let appliance = [];
+    let index = 0;
+    arrow.style.transform = "rotate(180deg)";
     filtreListeAppareils.style.display = "grid";
     for (let i = 0; i < recipes.length; i++) {
       appliance.push(recipes[i].appliance);
     }
     let appareilsArray = Array.from(new Set(appliance));
-    console.log(appareilsArray);
+    //console.log(appareilsArray);
     appareilsArray.forEach(function (appliance) {
       let listeItems = `
-    <li onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>
+    <li class="appareilItem" onclick="createDiv('${appliance}', 'appareilItem', ${index++})">${appliance}</li>
     `;
       filtreListeAppareils.innerHTML += listeItems;
     });
   });
   filtreListeAppareils.addEventListener("click", function () {
     filtreListeAppareils.innerHTML = "";
-    filtreListeAppareils.style.display = "none ";
+    arrow.style.transform = "rotate(360deg)";
   });
 }
 
-ingredientsAppareils();
+appareilsInput();
 
-function ingredientsUstensils() {
+function ustensilsInput() {
   const filtreListeUstensils = document.getElementById(
     "filtre-liste-ustensils"
   );
+  const arrow = document.getElementById("ustensil-arrow-id");
   const inputUstensils = document.getElementById("ustensils");
   inputUstensils.addEventListener("click", function () {
     let ustensils = [];
+    let index = 0;
+    arrow.style.transform = "rotate(180deg)";
     filtreListeUstensils.style.display = "grid";
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ustensils.length; j++) {
-        console.log(recipes[i].ustensils[j]);
+        //console.log(recipes[i].ustensils[j]);
         ustensils.push(recipes[i].ustensils);
       }
     }
     let ustensilsArray = Array.from(new Set(ustensils));
-    console.log(ustensilsArray);
+    //console.log(ustensilsArray);
     ustensilsArray.forEach(function (ustensils) {
       let listeItems = `
-      <li onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>
+      <li class="ustensilItem" onclick="createDiv('${ustensils}', 'ustensilItem', ${index++})">${ustensils}</li>
       `;
       filtreListeUstensils.innerHTML += listeItems;
     });
   });
   filtreListeUstensils.addEventListener("click", function () {
     filtreListeUstensils.innerHTML = "";
-    filtreListeUstensils.style.display = "none ";
+    arrow.style.transform = "rotate(360deg)";
   });
 }
 
-ingredientsUstensils();
+ustensilsInput();
 
 /* Fonction pour afficher les items de recherche */
 
 function createDiv(value, style, idIndex) {
-  let containerArticle = document.getElementById("liste-findArticles");
+  let containerItem = document.getElementById("liste-findArticles");
   const item =
     '<li id="' +
     idIndex +
@@ -145,7 +151,7 @@ function createDiv(value, style, idIndex) {
     '<i onclick="deleteDiv(' +
     idIndex +
     ')" class="fa-solid fa-xmark fa-2x"></i></li>';
-  containerArticle.innerHTML += item;
+  containerItem.innerHTML += item;
 }
 
 function deleteDiv(element) {
@@ -153,16 +159,60 @@ function deleteDiv(element) {
   elt.remove();
 }
 
-function rechercher() {
-  let input = document.getElementById("barre-de-recherche").value;
-  input = input.toLowerCase();
-  let x = document.getElementsByClassName("ingredientItem");
+/* Rechercher avec les input */
 
-  for (i = 0; i < x.length; i++) {
-    if (!x[i].innerHTML.toLowerCase().includes(input)) {
-      x[i].style.display = "none";
+function rechercherIngredient() {
+  let input = document.getElementById("ingredients").value;
+  input = input.toLowerCase();
+  let lettre = document.getElementsByClassName("ingredientItem");
+
+  for (i = 0; i < lettre.length; i++) {
+    if (!lettre[i].innerHTML.toLowerCase().includes(input)) {
+      lettre[i].style.display = "none";
     } else {
-      x[i].style.display = "list-item";
+      lettre[i].style.display = "list-item";
     }
   }
 }
+
+function rechercherUstensils() {
+  let input = document.getElementById("ustensils").value;
+  input = input.toLowerCase();
+  let lettre = document.getElementsByClassName("ustensilItem");
+
+  for (i = 0; i < lettre.length; i++) {
+    if (!lettre[i].innerHTML.toLowerCase().includes(input)) {
+      lettre[i].style.display = "none";
+    } else {
+      lettre[i].style.display = "list-item";
+    }
+  }
+}
+
+function rechercherAppareil() {
+  let input = document.getElementById("appareils").value;
+  input = input.toLowerCase();
+  let lettre = document.getElementsByClassName("appareilItem");
+
+  for (i = 0; i < lettre.length; i++) {
+    if (!lettre[i].innerHTML.toLowerCase().includes(input)) {
+      lettre[i].style.display = "none";
+    } else {
+      lettre[i].style.display = "list-item";
+    }
+  }
+}
+
+/* function rechercher(inputName, listesItems) {
+  let input = document.getElementById(inputName).value;
+  input = input.toLowerCase();
+  let liste = document.getElementsByClassName(listesItems);
+
+  for (i = 0; i < liste.length; i++) {
+    if (!liste[i].innerHTML.toLowerCase().includes(input)) {
+      liste[i].style.display = "none";
+    } else {
+      liste[i].style.display = "list-item";
+    }
+  }
+} */

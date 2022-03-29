@@ -71,7 +71,6 @@ header {
 .liste-findArticles li {
   width: 150px;
   height: 40px;
-  display: none;
   justify-content: space-between;
   border: none;
   margin: 10px 10px 10px 0;
@@ -100,16 +99,28 @@ header {
 }
 
 .fa-angle-down {
-  position: absolute;
-  right: 10%;
-  top: 25%;
   color: #fff;
+  margin-top: 50%;
+  transition-duration: 0.5s;
 }
+
+#ingredient-arrow {
+  background: #3282f7;
+}
+
+#appareil-arrow {
+  background: #68d9a4;
+}
+
+#ustensil-arrow {
+  background: #ed6454;
+}
+
 .input--filtre {
   font-size: 20px;
   height: 75px;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   width: 240px;
   color: #fff;
 }
@@ -117,6 +128,12 @@ header {
 .input--filtre::placeholder {
   color: #fff;
   font-size: 18px;
+}
+
+.arrow-input {
+  width: 50px;
+  border-radius: 0 5px 5px 0;
+  text-align: center;
 }
 
 #ingredients {
@@ -133,19 +150,18 @@ header {
 .filtre-liste {
   list-style: none;
   display: grid;
+  border-radius: 0 0 5px 5px;
   grid-template-columns: 1fr 1fr 1fr;
   color: #fff;
-  width: 100%;
+  width: 90%;
 }
 #filtre-liste-ingredients {
   background: #3282f7;
 }
 #filtre-liste-appareils {
-  display: none;
   background: #68d9a4;
 }
 #filtre-liste-ustensils {
-  display: none;
   background: #ed6454;
 }
 
