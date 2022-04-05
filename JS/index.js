@@ -1,3 +1,4 @@
+let ingredientsArray = [];
 /* Afficher les recettes */
 function recipesCards() {
   let container = document.getElementById("recipes_container");
@@ -53,14 +54,15 @@ function ingredientsInput() {
     arrow.style.transform = "rotate(180deg)";
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ingredients.length; j++) {
-        ingredients.push(recipes[i].ingredients[j].ingredient);
+        ingredients.push(recipes[i].ingredients[j].ingredient.toLowerCase());
       }
     }
-    let ingredientsArray = Array.from(new Set(ingredients));
-    ingredientsArray.forEach(function (ingredients) {
+    ingredientsArray = Array.from(new Set(ingredients));
+    //console.log(ingredientsArray);
+    ingredientsArray.forEach(function (ingredient) {
       let listeItems = `
-      <li class="ingredientItem" onclick="createDiv('${ingredients}', 'ingredientItem', ${index++})">${ingredients}</li>
-      `;
+        <li class="ingredientItem" onclick="createDiv('${ingredient}', 'ingredientItem', ${index++})">${ingredient}</li>
+        `;
       filtreListeIngredients.innerHTML += listeItems;
     });
   });
@@ -160,8 +162,27 @@ function deleteDiv(element) {
 }
 
 /* Rechercher avec les input */
+document
+  .getElementById("ingredients")
+  .addEventListener("keyup", function (event) {
+    let input = document.getElementsByClassName("ingredientItem");
+    let value = document.getElementById("ingredients").value;
+    console.log(event);
+    const result = searchStringInArray(value, ingredients, input);
+  });
 
-function rechercherIngredient() {
+function searchStringInArray(value, elements, classElements) {
+  for (i = 0; i < value.length; i++) {
+    if (!value[i].innerHTML.toLowerCase().includes(input)) {
+      console.log("hello");
+      classElements[i].style.display = "none";
+    } else {
+      console.log("hello toi");
+      classElements[i].style.display = "list-item";
+    }
+  }
+}
+/* function rechercherIngredient() {
   let input = document.getElementById("ingredients").value;
   input = input.toLowerCase();
   let lettre = document.getElementsByClassName("ingredientItem");
@@ -173,7 +194,7 @@ function rechercherIngredient() {
       lettre[i].style.display = "list-item";
     }
   }
-}
+} */
 
 function rechercherUstensils() {
   let input = document.getElementById("ustensils").value;
@@ -203,16 +224,23 @@ function rechercherAppareil() {
   }
 }
 
-/* function rechercher(inputName, listesItems) {
-  let input = document.getElementById(inputName).value;
-  input = input.toLowerCase();
-  let liste = document.getElementsByClassName(listesItems);
-
-  for (i = 0; i < liste.length; i++) {
-    if (!liste[i].innerHTML.toLowerCase().includes(input)) {
-      liste[i].style.display = "none";
-    } else {
-      liste[i].style.display = "list-item";
-    }
-  }
-} */
+/* document.querySelector("#recherche").addEventListener("keyup", function () {
+  // On ajoute un gestionnaire "keyup" sur ton champ "#recherche"
+  const that = this; // On garde en mémoire le context ("#recherche") dans une variable
+  const elements = Array.from(document.querySelectorAll(".element")); // On récupère les éléments ".element" et on place la NodeList dans un Array pour pouvoir utiliser "filter"
+  elements.forEach((element) => {
+    // Pour chaque ".element"...
+    element.style.display = null; // ... on réinitialise le "style.display"
+  });
+  elements
+    .filter(
+      (
+        element // On filtre l'array d'".element"...
+      ) => !element.innerText.toLowerCase().includes(that.value.toLowerCase()) // ... en vérifiant que "innerText" (et pas innerHTML) ne contient pas la valeur de "#recherche" (contenu dans la variable "that")
+    )
+    .forEach(
+      (
+        element // Pour chaque éléments retenu (c'est à dire quand le test précédent a renvoyé "true" et que l'élément n'inclue pas la recherche)...
+      ) => (element.style.display = "none") // ... on définit la propriété "style.display" sur "none"
+    );
+}); */
