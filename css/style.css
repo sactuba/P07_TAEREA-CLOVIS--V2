@@ -147,13 +147,19 @@ header {
 #ustensils {
   background: #ed6454;
 }
+
+.filtre-container {
+  position: relative;
+  z-index: 1;
+}
+
 .filtre-liste {
   list-style: none;
   display: grid;
   border-radius: 0 0 5px 5px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 130px 200px 200px;
   color: #fff;
-  width: 90%;
+  width: 100%;
 }
 #filtre-liste-ingredients {
   background: #3282f7;
@@ -168,6 +174,8 @@ header {
 /* BODY */
 
 .recipes_container {
+  position: relative;
+  z-index: -1;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 30px;
