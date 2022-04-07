@@ -69,9 +69,7 @@ header {
 }
 
 .liste-findArticles li {
-  width: 150px;
-  height: 40px;
-  justify-content: space-between;
+  display: flex;
   border: none;
   margin: 10px 10px 10px 0;
   border-radius: 5px;
@@ -81,6 +79,7 @@ header {
 
 .ingredientItem {
   background: #3282f7;
+  text-indent: 2%;
 }
 .appareilItem {
   background: #68d9a4;
@@ -90,7 +89,7 @@ header {
 }
 .filtre {
   display: flex;
-  column-gap: 3%;
+  column-gap: 2%;
 }
 
 .filtre-container--input {
@@ -121,13 +120,11 @@ header {
   height: 75px;
   border: none;
   border-radius: 5px 0 0 5px;
-  width: 240px;
   color: #fff;
 }
 
 .input--filtre::placeholder {
   color: #fff;
-  font-size: 18px;
 }
 
 .arrow-input {
@@ -138,14 +135,17 @@ header {
 
 #ingredients {
   background: #3282f7;
+  width: 100%;
 }
 
 #appareils {
   background: #68d9a4;
+  width: 100%;
 }
 
 #ustensils {
   background: #ed6454;
+  width: 100%;
 }
 
 .filtre-container {
@@ -155,9 +155,10 @@ header {
 
 .filtre-liste {
   list-style: none;
-  display: grid;
+  display: none;
   border-radius: 0 0 5px 5px;
-  grid-template-columns: 130px 200px 200px;
+  grid-template-columns: auto auto auto;
+  row-gap: 2%;
   color: #fff;
   width: 100%;
 }

@@ -47,13 +47,16 @@ function ingredientsInput() {
     "filtre-liste-ingredients"
   );
   const arrow = document.getElementById("ingredient-arrow-id");
-
+  const arrowbox = document.getElementById("ingredient-arrow");
   const inputIng = document.getElementById("ingredients");
-  const ListeIngredients = document.getElementsByClassName("ingredientItem");
+  //const ListeIngredients = document.getElementsByClassName("ingredientItem");
   inputIng.addEventListener("click", function () {
     let ingredients = [];
     let index = 0;
     arrow.style.transform = "rotate(180deg)";
+    filtreListeIngredients.style.display = "grid";
+    arrowbox.style.borderRadius = "0 5px 0 0";
+    inputIng.style.borderRadius = "5px 0 0 0";
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ingredients.length; j++) {
         ingredients.push(recipes[i].ingredients[j].ingredient.toLowerCase());
@@ -67,9 +70,13 @@ function ingredientsInput() {
       filtreListeIngredients.innerHTML += listeItems;
     });
   });
+
   filtreListeIngredients.addEventListener("click", function () {
     filtreListeIngredients.innerHTML = "";
     arrow.style.transform = "rotate(360deg)";
+    filtreListeIngredients.style.display = "none";
+    arrowbox.style.borderRadius = "0 5px 5px 0";
+    inputIng.style.borderRadius = "5px 0 0 5px";
   });
   inputIng.addEventListener("keyup", function (event) {
     let value = document.getElementById("ingredients").value;
@@ -92,12 +99,15 @@ function appareilsInput() {
     "filtre-liste-appareils"
   );
   const arrow = document.getElementById("appareil-arrow-id");
+  const arrowbox = document.getElementById("appareil-arrow");
   const inputAppareils = document.getElementById("appareils");
   inputAppareils.addEventListener("click", function () {
     let appliance = [];
     let index = 0;
     arrow.style.transform = "rotate(180deg)";
     filtreListeAppareils.style.display = "grid";
+    arrowbox.style.borderRadius = "0 5px 0 0";
+    inputAppareils.style.borderRadius = "5px 0 0 0";
     for (let i = 0; i < recipes.length; i++) {
       appliance.push(recipes[i].appliance);
     }
@@ -113,6 +123,9 @@ function appareilsInput() {
   filtreListeAppareils.addEventListener("click", function () {
     filtreListeAppareils.innerHTML = "";
     arrow.style.transform = "rotate(360deg)";
+    filtreListeAppareils.style.display = "none";
+    arrowbox.style.borderRadius = "0 5px 5px 0";
+    inputAppareils.style.borderRadius = "5px 0 0 5px";
   });
   inputAppareils.addEventListener("keyup", function (event) {
     let value = document.getElementById("appareils").value;
@@ -135,15 +148,18 @@ function ustensilsInput() {
     "filtre-liste-ustensils"
   );
   const arrow = document.getElementById("ustensil-arrow-id");
+  const arrowbox = document.getElementById("ustensil-arrow");
   const inputUstensils = document.getElementById("ustensils");
   inputUstensils.addEventListener("click", function () {
     let ustensils = [];
     let index = 0;
     arrow.style.transform = "rotate(180deg)";
     filtreListeUstensils.style.display = "grid";
+    arrowbox.style.borderRadius = "0 5px 0 0";
+    inputUstensils.style.borderRadius = "5px 0 0 0";
     for (let i = 0; i < recipes.length; i++) {
       for (let j = 0; j < recipes[i].ustensils.length; j++) {
-        ustensils.push(recipes[i].ustensils);
+        ustensils.push(recipes[i].ustensils[j].toLowerCase());
       }
     }
     ustensilsArray = Array.from(new Set(ustensils));
@@ -157,10 +173,12 @@ function ustensilsInput() {
   filtreListeUstensils.addEventListener("click", function () {
     filtreListeUstensils.innerHTML = "";
     arrow.style.transform = "rotate(360deg)";
+    filtreListeUstensils.style.display = "none";
+    arrowbox.style.borderRadius = "0 5px 5px 0";
+    inputUstensils.style.borderRadius = "5px 0 0 5px";
   });
   inputUstensils.addEventListener("keyup", function (event) {
     let value = document.getElementById("ustensils").value;
-    console.log(ustensilsArray);
     let result = ustensilsArray.filter((ustensil) =>
       ustensil.toLowerCase().startsWith(value.toLowerCase())
     );
@@ -175,6 +193,13 @@ function ustensilsInput() {
 
 ustensilsInput();
 
+/* Fonction de la barre de la recherche */
+
+function barreDeRecherche() {
+  let input = document.getElementById("barre-de-recherche");
+  //console.log(input);
+}
+barreDeRecherche();
 /* Fonction pour afficher les items de recherche et les suprimez*/
 
 function createDiv(value, style, idIndex) {
@@ -188,7 +213,7 @@ function createDiv(value, style, idIndex) {
     value +
     '<i onclick="deleteDiv(' +
     idIndex +
-    ')" class="fa-solid fa-xmark fa-2x"></i></li>';
+    ')" class="fa-solid fa-xmark"></i></li>';
   containerItem.innerHTML += item;
 }
 
