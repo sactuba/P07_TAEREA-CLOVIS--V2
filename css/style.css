@@ -50,6 +50,8 @@ header {
 .barre-de-recherche--input {
   height: 70px;
   width: 100%;
+  font-size: 18px;
+  text-indent: 10px;
   border: none;
   border-radius: 5px;
   background: #e7e7e7;
@@ -60,6 +62,7 @@ header {
   color: #000000;
   font-size: 18px;
   margin-left: 20px;
+  text-indent: 10px;
 }
 
 /* FILTRE */
@@ -79,13 +82,21 @@ header {
 
 .ingredientItem {
   background: #3282f7;
-  text-indent: 2%;
+  text-indent: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .appareilItem {
   background: #68d9a4;
+  text-indent: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .ustensilItem {
   background: #ed6454;
+  text-indent: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 .filtre {
   display: flex;
@@ -155,10 +166,9 @@ header {
 
 .filtre-liste {
   list-style: none;
-  display: none;
+  display: grid;
   border-radius: 0 0 5px 5px;
   grid-template-columns: auto auto auto;
-  row-gap: 2%;
   color: #fff;
   width: 100%;
 }
