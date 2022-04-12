@@ -1,102 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="css/style.css" />
-    <script
-      src="https://kit.fontawesome.com/1cfed0d4bd.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Acceuil Les petits plats</title>
-  </head>
-  <body>
-    <header>
-      <div class="header--logo">
-        <i class="fa-solid fa-fire-burner fa-5x"></i>
-      </div>
-      <h1 class="header--title lato">Les petits Plats</h1>
-    </header>
-    <nav>
-      <div class="barre-de-recherche">
-        <input
-          type="text"
-          name="recherche"
-          class="barre-de-recherche--input"
-          id="barre-de-recherche"
-          placeholder="Rechercher une recette"
-        />
-      </div>
+ <head>
+  <link rel="stylesheet" href="css/style.css" />
+  <script
+   src="https://kit.fontawesome.com/1cfed0d4bd.js"
+   crossorigin="anonymous"
+  ></script>
+  <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceuil Les petits plats</title>
+ </head>
+ <body>
+  <header>
+   <div class="header--logo">
+    <i class="fa-solid fa-fire-burner fa-5x"></i>
+   </div>
+   <h1 class="header--title lato">Les petits Plats</h1>
+  </header>
+  <nav>
+   <div class="barre-de-recherche">
+    <input
+     type="text"
+     name="recherche"
+     class="barre-de-recherche--input"
+     id="barre-de-recherche"
+     placeholder="Rechercher une recette"
+    />
+   </div>
 
-      <div class="findArticle">
-        <ul class="liste-findArticles" id="liste-findArticles"></ul>
+   <div class="findArticle">
+    <ul class="liste-findArticles" id="liste-findArticles"></ul>
+   </div>
+
+   <div class="filtre">
+    <div class="filtre-container" id="filtre-container-ingredients">
+     <div class="filtre-container--input">
+      <input
+       type="text"
+       name="ingredients"
+       id="ingredients"
+       class="input--filtre"
+       placeholder="Ingredients"
+      />
+      <div id="ingredient-arrow" class="arrow-input">
+       <i id="ingredient-arrow-id" class="fa-solid fa-angle-down fa-2x"></i>
       </div>
+     </div>
+     <ul id="filtre-liste-ingredients" class="filtre-liste lato"></ul>
+    </div>
 
-      <div class="filtre">
-        <div class="filtre-container">
-          <div class="filtre-container--input">
-            <input
-              type="text"
-              name="ingredients"
-              id="ingredients"
-              class="input--filtre"
-              placeholder="Ingredients"
-            />
-            <div id="ingredient-arrow" class="arrow-input">
-              <i
-                id="ingredient-arrow-id"
-                class="fa-solid fa-angle-down fa-2x"
-              ></i>
-            </div>
-          </div>
-          <ul id="filtre-liste-ingredients" class="filtre-liste lato"></ul>
-        </div>
-
-        <div class="filtre-container">
-          <div class="filtre-container--input">
-            <input
-              type="text"
-              name="appareils"
-              id="appareils"
-              class="input--filtre"
-              placeholder="Appareils"
-            />
-            <div id="appareil-arrow" class="arrow-input">
-              <i
-                id="appareil-arrow-id"
-                class="fa-solid fa-angle-down fa-2x"
-              ></i>
-            </div>
-          </div>
-          <ul id="filtre-liste-appareils" class="filtre-liste lato"></ul>
-        </div>
-
-        <div class="filtre-container">
-          <div class="filtre-container--input">
-            <input
-              type="text"
-              name="ustensils"
-              id="ustensils"
-              class="input--filtre"
-              placeholder="Ustensils"
-            />
-            <div id="ustensil-arrow" class="arrow-input">
-              <i
-                id="ustensil-arrow-id"
-                class="fa-solid fa-angle-down fa-2x"
-              ></i>
-            </div>
-          </div>
-          <ul id="filtre-liste-ustensils" class="filtre-liste lato"></ul>
-        </div>
+    <div class="filtre-container" id="filtre-container-appareils">
+     <div class="filtre-container--input">
+      <input
+       type="text"
+       name="appareils"
+       id="appareils"
+       class="input--filtre"
+       placeholder="Appareils"
+      />
+      <div id="appareil-arrow" class="arrow-input">
+       <i id="appareil-arrow-id" class="fa-solid fa-angle-down fa-2x"></i>
       </div>
-    </nav>
-    <main>
-      <div id="recipes_container" class="recipes_container"></div>
-    </main>
-    <script src="data/recipes.js"></script>
-    <script src="js/index.js"></script>
-  </body>
+     </div>
+     <ul id="filtre-liste-appareils" class="filtre-liste lato"></ul>
+    </div>
+
+    <div class="filtre-container" id="filtre-container-ustensils">
+     <div class="filtre-container--input">
+      <input
+       type="text"
+       name="ustensils"
+       id="ustensils"
+       class="input--filtre"
+       placeholder="Ustensils"
+      />
+      <div id="ustensil-arrow" class="arrow-input">
+       <i id="ustensil-arrow-id" class="fa-solid fa-angle-down fa-2x"></i>
+      </div>
+     </div>
+     <ul id="filtre-liste-ustensils" class="filtre-liste lato"></ul>
+    </div>
+   </div>
+  </nav>
+  <main>
+   <div id="recipes_container" class="recipes_container"></div>
+  </main>
+  <script src="data/recipes.js"></script>
+  <script src="js/index.js"></script>
+ </body>
 </html>
