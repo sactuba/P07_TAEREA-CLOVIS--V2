@@ -18,6 +18,10 @@ let appareilsArray = [];
 let ustensilsArray = [];
 let finArticlesArray = [];
 
+let ingredients = [];
+let appliance = [];
+let ustensils = [];
+
 const filtreListeIngredients = document.getElementById(
  "filtre-liste-ingredients"
 );
@@ -94,7 +98,7 @@ function recipesCards() {
   });
   //console.log(recipes[i].ingredients);
 
-  let elementListe = [];
+  /*   let elementListe = [];
   let valueIng = document.getElementsByClassName("ingredientItem").value;
   //elementListe.push(valueIng.toLowerCase());
   let result = recipes[i].ingredients.filter((ingredient) =>
@@ -102,7 +106,7 @@ function recipesCards() {
   );
   result.forEach(function (ingredient) {
    container.innerHTML += cards;
-  });
+  }); */
  }
 }
 
@@ -110,7 +114,6 @@ recipesCards();
 
 /* Fonctions  pour l'input des ingredients */
 
-let ingredients = [];
 const arrowIng = document.getElementById("ingredient-arrow-id");
 const arrowboxIng = document.getElementById("ingredient-arrow");
 
@@ -166,8 +169,6 @@ inputRecherche.addEventListener("keyup", function () {
 });
 
 /* Fonctions  pour l'input des appareils */
-
-let appliance = [];
 const arrowAppareils = document.getElementById("appareil-arrow-id");
 const arrowboxAppareils = document.getElementById("appareil-arrow");
 
@@ -176,7 +177,7 @@ arrowboxAppareils.addEventListener("click", function () {
  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
  appareilsArray.forEach(function (appliance) {
   let listeItems = `
-      <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem', ${index++})">${appliance}</li>
+      <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>
       `;
   filtreListeAppareils.innerHTML += listeItems;
  });
@@ -200,7 +201,7 @@ inputAppareils.addEventListener("keyup", function (event) {
  filtreListeAppareils.innerHTML = " ";
  result.forEach(function (appliance) {
   let listeItems = `
-  <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem', ${index++})">${appliance}</li>`;
+  <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
   filtreListeAppareils.innerHTML += listeItems;
  });
 });
@@ -214,14 +215,13 @@ inputRecherche.addEventListener("keyup", function () {
  filtreListeAppareils.innerHTML = " ";
  result.forEach(function (appliance) {
   let listeItems = `
-  <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem', ${index++})">${appliance}</li>`;
+  <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
   filtreListeAppareils.innerHTML += listeItems;
  });
 });
 
 /* Fonctions  pour l'input des ustensils */
 
-let ustensils = [];
 const arrowUstensils = document.getElementById("ustensil-arrow-id");
 const arrowboxUstensils = document.getElementById("ustensil-arrow");
 
