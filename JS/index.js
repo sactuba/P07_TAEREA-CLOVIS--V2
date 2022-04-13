@@ -149,7 +149,7 @@ inputIng.addEventListener("keyup", function () {
  filtreListeIngredients.innerHTML = " ";
  result.forEach(function (ingredient) {
   let listeItems = `
-  <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem', ${index++})">${ingredient}</li>`;
+  <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
   filtreListeIngredients.innerHTML += listeItems;
  });
 });
@@ -163,7 +163,7 @@ inputRecherche.addEventListener("keyup", function () {
  filtreListeIngredients.innerHTML = " ";
  result.forEach(function (ingredient) {
   let listeItems = `
-  <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem', ${index++})">${ingredient}</li>`;
+  <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
   filtreListeIngredients.innerHTML += listeItems;
  });
 });
@@ -254,7 +254,7 @@ inputUstensils.addEventListener("keyup", function (event) {
  filtreListeUstensils.innerHTML = " ";
  result.forEach(function (ustensil) {
   let listeItems = `
-  <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem', ${index++})">${ustensils}</li>`;
+  <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>`;
   filtreListeUstensils.innerHTML += listeItems;
  });
 });
@@ -269,7 +269,7 @@ inputRecherche.addEventListener("keyup", function (event) {
  filtreListeUstensils.innerHTML = " ";
  result.forEach(function (ustensil) {
   let listeItems = `
-  <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem', ${index++})">${ustensils}</li>`;
+  <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>`;
   filtreListeUstensils.innerHTML += listeItems;
  });
 });
