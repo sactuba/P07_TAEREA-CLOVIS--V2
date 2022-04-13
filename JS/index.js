@@ -1,7 +1,11 @@
+/* Accés aux input */
+
 const inputIng = document.getElementById("ingredients");
 const inputAppareils = document.getElementById("appareils");
 const inputUstensils = document.getElementById("ustensils");
 const inputRecherche = document.getElementById("barre-de-recherche");
+
+/* Accés aux container des input */
 
 const ingredientContainer = document.getElementById(
  "filtre-container-ingredients"
@@ -32,11 +36,12 @@ const listeIngredients = document.getElementById("filtre-liste-ingredients");
 const listeAppareils = document.getElementById("filtre-liste-appareils");
 const listeUstensils = document.getElementById("filtre-liste-ustensils");
 
-const findArticles = document.getElementById("liste-findArticles");
-
 const ingredientItem = document.getElementsByClassName("ingredientItem");
 const appareilItem = document.getElementsByClassName("appareilItem");
 const ustensilItem = document.getElementsByClassName("ustensilItem");
+
+/* Accés a la liste des input valider */
+const findArticles = document.getElementById("liste-findArticles");
 
 /* tableaux des ingredients */
 for (let i = 0; i < recipes.length; i++) {
@@ -59,13 +64,13 @@ for (let i = 0; i < recipes.length; i++) {
  }
 }
 ustensilsArray = Array.from(new Set(ustensils));
+//console.log(ustensilsArray);
 
 /* Afficher les recettes */
 
 function recipesCards() {
  let container = document.getElementById("recipes_container");
  for (let i = 0; i < recipes.length; i++) {
-  //console.log(id);
   let cards = `
     <article class="recipes_cards">
   <img src="..." alt="..." class="recipes_cards--image" />
@@ -97,6 +102,9 @@ function recipesCards() {
    liste.innerHTML += displayIng;
   });
   //console.log(recipes[i].ingredients);
+
+  let valueIng = document.getElementsByClassName("ingredientItem");
+  console.log(valueIng);
 
   /*   let elementListe = [];
   let valueIng = document.getElementsByClassName("ingredientItem").value;
@@ -174,6 +182,7 @@ const arrowboxAppareils = document.getElementById("appareil-arrow");
 
 arrowboxAppareils.addEventListener("click", function () {
  let index = 0;
+ filtreListeAppareils.innerHTML = " ";
  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
  appareilsArray.forEach(function (appliance) {
   let listeItems = `
@@ -227,17 +236,19 @@ const arrowboxUstensils = document.getElementById("ustensil-arrow");
 
 arrowboxUstensils.addEventListener("click", function () {
  let index = 0;
+ filtreListeUstensils.innerHTML = " ";
+
  arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
  ustensilsArray.forEach(function (ustensils) {
   let listeItems = `
-      <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem', ${index++})">${ustensils}</li>
+      <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>
       `;
   filtreListeUstensils.innerHTML += listeItems;
  });
- arrowboxUstensils.addEventListener("click", function () {
+ /*  arrowboxUstensils.addEventListener("click", function () {
   filtreListeUstensils.innerHTML = "";
   arrowDown(inputIng, arrowUstensils, arrowboxUstensils);
- });
+ }); */
 });
 
 filtreListeUstensils.addEventListener("click", function () {
@@ -254,7 +265,7 @@ inputUstensils.addEventListener("keyup", function (event) {
  filtreListeUstensils.innerHTML = " ";
  result.forEach(function (ustensil) {
   let listeItems = `
-  <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>`;
+  <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
   filtreListeUstensils.innerHTML += listeItems;
  });
 });
@@ -269,7 +280,7 @@ inputRecherche.addEventListener("keyup", function (event) {
  filtreListeUstensils.innerHTML = " ";
  result.forEach(function (ustensil) {
   let listeItems = `
-  <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>`;
+  <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
   filtreListeUstensils.innerHTML += listeItems;
  });
 });
