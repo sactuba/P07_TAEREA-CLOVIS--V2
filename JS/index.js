@@ -101,21 +101,20 @@ function recipesCards() {
       `;
    liste.innerHTML += displayIng;
   });
-  //console.log(recipes[i].ingredients);
 
-  let valueIng = document.getElementsByClassName("ingredientItem");
-  console.log(valueIng);
-
-  /*   let elementListe = [];
-  let valueIng = document.getElementsByClassName("ingredientItem").value;
-  //elementListe.push(valueIng.toLowerCase());
-  let result = recipes[i].ingredients.filter((ingredient) =>
-   ingredient.toLowerCase().includes(valueIng.toLowerCase())
-  );
-  result.forEach(function (ingredient) {
-   container.innerHTML += cards;
+  /*   inputRecherche.addEventListener("keyup", function (e) {
+   console.log(ingredientItem);
+   let value = ingredientItem.;
+   let result = ingredientsArray.filter((recipes) =>
+    recipes.toLowerCase().includes(value.toLowerCase())
+   );
+   container = " ";
+   result.forEach(function () {
+    container.innerHTML += cards;
+   });
   }); */
  }
+ //console.log(valueIng);
 }
 
 recipesCards();
@@ -150,6 +149,7 @@ filtreListeIngredients.addEventListener("click", function () {
 /* Recherche des ingredients avec la barre de recherche */
 
 inputIng.addEventListener("keyup", function () {
+ arrowUp(inputIng, arrowIng, arrowboxIng);
  let value = document.getElementById("ingredients").value;
  let result = ingredientsArray.filter((ingredient) =>
   ingredient.toLowerCase().includes(value.toLowerCase())
@@ -163,17 +163,20 @@ inputIng.addEventListener("keyup", function () {
 });
 
 inputRecherche.addEventListener("keyup", function () {
- let valueRecherche = inputRecherche.value;
- let result = ingredientsArray.filter((ingredient) =>
-  ingredient.toLowerCase().includes(valueRecherche.toLowerCase())
- );
+ for (let i = 3; i < inputRecherche.value.length; i++) {
+  arrowUp(inputIng, arrowIng, arrowboxIng);
+  let valueRecherche = inputRecherche.value;
+  let result = ingredientsArray.filter((ingredient) =>
+   ingredient.toLowerCase().includes(valueRecherche.toLowerCase())
+  );
 
- filtreListeIngredients.innerHTML = " ";
- result.forEach(function (ingredient) {
-  let listeItems = `
-  <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
-  filtreListeIngredients.innerHTML += listeItems;
- });
+  filtreListeIngredients.innerHTML = " ";
+  result.forEach(function (ingredient) {
+   let listeItems = `
+         <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
+   filtreListeIngredients.innerHTML += listeItems;
+  });
+ }
 });
 
 /* Fonctions  pour l'input des appareils */
@@ -202,6 +205,7 @@ filtreListeAppareils.addEventListener("click", function () {
 });
 
 inputAppareils.addEventListener("keyup", function (event) {
+ arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
  let value = document.getElementById("appareils").value;
  let result = appareilsArray.filter((appliance) =>
   appliance.toLowerCase().includes(value.toLowerCase())
@@ -216,17 +220,20 @@ inputAppareils.addEventListener("keyup", function (event) {
 });
 
 inputRecherche.addEventListener("keyup", function () {
- let valueRecherche = inputRecherche.value;
- let result = appareilsArray.filter((appliance) =>
-  appliance.toLowerCase().includes(valueRecherche.toLowerCase())
- );
+ for (let i = 3; i < inputRecherche.value.length; i++) {
+  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
+  let valueRecherche = inputRecherche.value;
+  let result = appareilsArray.filter((appliance) =>
+   appliance.toLowerCase().includes(valueRecherche.toLowerCase())
+  );
 
- filtreListeAppareils.innerHTML = " ";
- result.forEach(function (appliance) {
-  let listeItems = `
-  <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
-  filtreListeAppareils.innerHTML += listeItems;
- });
+  filtreListeAppareils.innerHTML = " ";
+  result.forEach(function (appliance) {
+   let listeItems = `
+         <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
+   filtreListeAppareils.innerHTML += listeItems;
+  });
+ }
 });
 
 /* Fonctions  pour l'input des ustensils */
@@ -257,6 +264,7 @@ filtreListeUstensils.addEventListener("click", function () {
 });
 
 inputUstensils.addEventListener("keyup", function (event) {
+ arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
  let value = document.getElementById("ustensils").value;
  let result = ustensilsArray.filter((ustensil) =>
   ustensil.toLowerCase().includes(value.toLowerCase())
@@ -271,18 +279,20 @@ inputUstensils.addEventListener("keyup", function (event) {
 });
 
 inputRecherche.addEventListener("keyup", function (event) {
- let valueRecherche = inputRecherche.value;
- arrowDown(inputUstensils, arrowUstensils, arrowboxUstensils);
- let result = ustensilsArray.filter((ustensil) =>
-  ustensil.toLowerCase().includes(valueRecherche.toLowerCase())
- );
+ for (let i = 3; i < inputRecherche.value.length; i++) {
+  arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
+  let valueRecherche = inputRecherche.value;
+  let result = ustensilsArray.filter((ustensil) =>
+   ustensil.toLowerCase().includes(valueRecherche.toLowerCase())
+  );
 
- filtreListeUstensils.innerHTML = " ";
- result.forEach(function (ustensil) {
-  let listeItems = `
-  <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
-  filtreListeUstensils.innerHTML += listeItems;
- });
+  filtreListeUstensils.innerHTML = " ";
+  result.forEach(function (ustensil) {
+   let listeItems = `
+         <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
+   filtreListeUstensils.innerHTML += listeItems;
+  });
+ }
 });
 
 /* Fonction de la barre de la recherche */
