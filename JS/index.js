@@ -5,6 +5,12 @@ const inputAppareils = document.getElementById("appareils");
 const inputUstensils = document.getElementById("ustensils");
 const inputRecherche = document.getElementById("barre-de-recherche");
 
+/* Accés aux value */
+const inputIngValue = document.getElementById("ingredients").value;
+const inputAppareilsValue = document.getElementById("appareils").value;
+const inputUstensilsValue = document.getElementById("ustensils").value;
+const inputRechercheValue = document.getElementById("barre-de-recherche").value;
+
 /* Accés aux container des input */
 
 const ingredientContainer = document.getElementById(
@@ -20,7 +26,7 @@ const ustensilsContainer = document.getElementById(
 let ingredientsArray = [];
 let appareilsArray = [];
 let ustensilsArray = [];
-let finArticlesArray = [];
+let findArticlesArray = [];
 
 let ingredients = [];
 let appliance = [];
@@ -43,7 +49,7 @@ const ustensilItem = document.getElementsByClassName("ustensilItem");
 /* Accés a la liste des input valider */
 const findArticles = document.getElementById("liste-findArticles");
 
-/* tableaux des ingredients */
+/* tableaux des ingredients sans doublon */
 for (let i = 0; i < recipes.length; i++) {
  for (let j = 0; j < recipes[i].ingredients.length; j++) {
   ingredients.push(recipes[i].ingredients[j].ingredient.toLowerCase());
@@ -51,23 +57,24 @@ for (let i = 0; i < recipes.length; i++) {
 }
 ingredientsArray = Array.from(new Set(ingredients));
 
-/* tableaux des appareils */
+/* tableaux des appareils sans doublon */
 for (let i = 0; i < recipes.length; i++) {
  appliance.push(recipes[i].appliance);
 }
 appareilsArray = Array.from(new Set(appliance));
 
-/* tableaux des ustensils */
+/* tableaux des ustensils sans doublon */
 for (let i = 0; i < recipes.length; i++) {
  for (let j = 0; j < recipes[i].ustensils.length; j++) {
   ustensils.push(recipes[i].ustensils[j].toLowerCase());
  }
 }
 ustensilsArray = Array.from(new Set(ustensils));
-//console.log(ustensilsArray);
 
 /* Afficher les recettes */
-
+let cardsIngredientsArray = [];
+let cardsAppareilArray = [];
+let cardsUstensilsArray = [];
 function recipesCards() {
  let container = document.getElementById("recipes_container");
  for (let i = 0; i < recipes.length; i++) {
@@ -101,23 +108,24 @@ function recipesCards() {
       `;
    liste.innerHTML += displayIng;
   });
-
-  /*   inputRecherche.addEventListener("keyup", function (e) {
-   console.log(ingredientItem);
-   let value = ingredientItem.;
-   let result = ingredientsArray.filter((recipes) =>
-    recipes.toLowerCase().includes(value.toLowerCase())
-   );
-   container = " ";
-   result.forEach(function () {
-    container.innerHTML += cards;
-   });
-  }); */
+  /* console.log(cardsIngredientsArray);
+  cardsIngredientsArray.push(recipes[i].ingredients);
+  cardsAppareilArray.push(recipes[i].appliance);
+  cardsUstensilsArray.push(recipes[i].ustensils);
+  console.log(cardsAppareilArray);
+  console.log(cardsUstensilsArray); */
+  //console.log(recipes[i]);
  }
- //console.log(valueIng);
 }
 
 recipesCards();
+
+/* function filterRecipes() {
+ let ingredientValue = ingredientItem.value;
+ let appareilValue = appareilItem.value;
+ let ustensilValue = ustensilItem.value;
+ console.log(ingredientItem.dataset.value);
+} */
 
 /* Fonctions  pour l'input des ingredients */
 
@@ -193,10 +201,10 @@ arrowboxAppareils.addEventListener("click", function () {
       `;
   filtreListeAppareils.innerHTML += listeItems;
  });
- arrowboxAppareils.addEventListener("click", function () {
+ /*  arrowboxAppareils.addEventListener("click", function () {
   filtreListeAppareils.innerHTML = "";
   arrowDown(inputAppareils, arrowAppareils, arrowboxAppareils);
- });
+ }); */
 });
 
 filtreListeAppareils.addEventListener("click", function () {
@@ -295,10 +303,10 @@ inputRecherche.addEventListener("keyup", function (event) {
  }
 });
 
-/* Fonction de la barre de la recherche */
+/*  */
 
 /* Fonction pour afficher les items de recherche et les suprimez */
-
+let indexArticles = 0;
 function createDiv(value, style, idIndex) {
  let containerItem = document.getElementById("liste-findArticles");
  const item =
@@ -314,6 +322,22 @@ function createDiv(value, style, idIndex) {
   idIndex +
   ')" class="fa-solid fa-xmark"></i></li>';
  containerItem.innerHTML += item;
+ findArticlesArray.push(value);
+}
+
+function filterRecipesElement() {
+ findArticlesArray.filter((elt) =>
+  elt.toLowerCase().includes(value.toLowerCase())
+ );
+ ingredientsArray.filter((ingredient) =>
+  ingredient.toLowerCase().includes(value.toLowerCase())
+ );
+ appareilsArray.filter((appliance) =>
+  appliance.toLowerCase().includes(value.toLowerCase())
+ );
+ ustensilsArray.filter((ustensil) =>
+  ustensil.toLowerCase().includes(value.toLowerCase())
+ );
 }
 
 function deleteDiv(element) {
