@@ -38,9 +38,9 @@ const filtreListeIngredients = document.getElementById(
 const filtreListeAppareils = document.getElementById("filtre-liste-appareils");
 const filtreListeUstensils = document.getElementById("filtre-liste-ustensils");
 
-const listeIngredients = document.getElementById("filtre-liste-ingredients");
+/* const listeIngredients = document.getElementById("filtre-liste-ingredients");
 const listeAppareils = document.getElementById("filtre-liste-appareils");
-const listeUstensils = document.getElementById("filtre-liste-ustensils");
+const listeUstensils = document.getElementById("filtre-liste-ustensils"); */
 
 const ingredientItem = document.getElementsByClassName("ingredientItem");
 const appareilItem = document.getElementsByClassName("appareilItem");
@@ -50,33 +50,53 @@ const ustensilItem = document.getElementsByClassName("ustensilItem");
 const findArticles = document.getElementById("liste-findArticles");
 
 /* tableaux des ingredients sans doublon */
-for (let i = 0; i < recipes.length; i++) {
- for (let j = 0; j < recipes[i].ingredients.length; j++) {
-  ingredients.push(recipes[i].ingredients[j].ingredient.toLowerCase());
+
+function getIngredients(recipes) {
+ let ingredients = [];
+ for (let i = 0; i < recipes.length; i++) {
+  for (let j = 0; j < recipes[i].ingredients.length; j++) {
+   ingredients.push(recipes[i].ingredients[j].ingredient.toLowerCase());
+  }
  }
+ ingredientsArray = Array.from(new Set(ingredients));
+ console.log(ingredientsArray);
 }
-ingredientsArray = Array.from(new Set(ingredients));
+
+getIngredients(recipes);
 
 /* tableaux des appareils sans doublon */
-for (let i = 0; i < recipes.length; i++) {
- appliance.push(recipes[i].appliance);
+
+function getAppareils(recipes) {
+ let appliance = [];
+ for (let i = 0; i < recipes.length; i++) {
+  appliance.push(recipes[i].appliance);
+ }
+ appareilsArray = Array.from(new Set(appliance));
 }
-appareilsArray = Array.from(new Set(appliance));
+
+getAppareils(recipes);
 
 /* tableaux des ustensils sans doublon */
-for (let i = 0; i < recipes.length; i++) {
- for (let j = 0; j < recipes[i].ustensils.length; j++) {
-  ustensils.push(recipes[i].ustensils[j].toLowerCase());
+
+function getUstensils(recipes) {
+ for (let i = 0; i < recipes.length; i++) {
+  for (let j = 0; j < recipes[i].ustensils.length; j++) {
+   ustensils.push(recipes[i].ustensils[j].toLowerCase());
+  }
  }
+ ustensilsArray = Array.from(new Set(ustensils));
 }
-ustensilsArray = Array.from(new Set(ustensils));
+
+getUstensils(recipes);
 
 /* Afficher les recettes */
 let cardsIngredientsArray = [];
 let cardsAppareilArray = [];
 let cardsUstensilsArray = [];
-function recipesCards() {
+
+function recipesCards(recipes) {
  let container = document.getElementById("recipes_container");
+ container.innerHTML = "";
  for (let i = 0; i < recipes.length; i++) {
   let cards = `
     <article class="recipes_cards">
@@ -108,48 +128,38 @@ function recipesCards() {
       `;
    liste.innerHTML += displayIng;
   });
-  /* console.log(cardsIngredientsArray);
-  cardsIngredientsArray.push(recipes[i].ingredients);
-  cardsAppareilArray.push(recipes[i].appliance);
-  cardsUstensilsArray.push(recipes[i].ustensils);
-  console.log(cardsAppareilArray);
-  console.log(cardsUstensilsArray); */
-  //console.log(recipes[i]);
  }
 }
 
-recipesCards();
-
-/* function filterRecipes() {
- let ingredientValue = ingredientItem.value;
- let appareilValue = appareilItem.value;
- let ustensilValue = ustensilItem.value;
- console.log(ingredientItem.dataset.value);
-} */
-
-/* Fonctions  pour l'input des ingredients */
+recipesCards(recipes);
 
 const arrowIng = document.getElementById("ingredient-arrow-id");
 const arrowboxIng = document.getElementById("ingredient-arrow");
 
-arrowboxIng.addEventListener("click", function () {
- let index = 0;
- filtreListeIngredients.innerHTML = " ";
- arrowUp(inputIng, arrowIng, arrowboxIng);
- ingredientsArray.forEach(function (ingredient) {
-  let listeItems = `
-        <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem', ${index++})">${ingredient}</li>
-        `;
-  filtreListeIngredients.innerHTML += listeItems;
+function handleIngredients() {
+ arrowboxIng.addEventListener("click", function () {
+  let index = 0;
+  filtreListeIngredients.style.display = "grid";
+  filtreListeIngredients.innerHTML = " ";
+  arrowUp(inputIng, arrowIng, arrowboxIng);
+  ingredientsArray.forEach(function (ingredient) {
+   let listeItems = `
+                 <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem', ${index++})">${ingredient}</li>
+                 `;
+   filtreListeIngredients.innerHTML += listeItems;
+  });
  });
-});
+}
 
-/* ingredientContainer.addEventListener("mouseout", function () {
- filtreListeIngredients.innerHTML = " ";
- arrowDown(inputIng, arrowIng, arrowboxIng);
-}); */
+document.getElementById("main").onclick = closeInputListe(
+ arrowboxIng,
+ filtreListeIngredients
+);
+
+handleIngredients();
 
 filtreListeIngredients.addEventListener("click", function () {
+ filtreListeIngredients.style.display = "none";
  filtreListeIngredients.innerHTML = " ";
  arrowDown(inputIng, arrowIng, arrowboxIng);
 });
@@ -158,6 +168,7 @@ filtreListeIngredients.addEventListener("click", function () {
 
 inputIng.addEventListener("keyup", function () {
  arrowUp(inputIng, arrowIng, arrowboxIng);
+ filtreListeIngredients.style.display = "grid";
  let value = document.getElementById("ingredients").value;
  let result = ingredientsArray.filter((ingredient) =>
   ingredient.toLowerCase().includes(value.toLowerCase())
@@ -171,6 +182,7 @@ inputIng.addEventListener("keyup", function () {
 });
 
 inputRecherche.addEventListener("keyup", function () {
+ filtreListeIngredients.style.display = "grid";
  for (let i = 3; i < inputRecherche.value.length; i++) {
   arrowUp(inputIng, arrowIng, arrowboxIng);
   let valueRecherche = inputRecherche.value;
@@ -191,21 +203,23 @@ inputRecherche.addEventListener("keyup", function () {
 const arrowAppareils = document.getElementById("appareil-arrow-id");
 const arrowboxAppareils = document.getElementById("appareil-arrow");
 
-arrowboxAppareils.addEventListener("click", function () {
- let index = 0;
- filtreListeAppareils.innerHTML = " ";
- arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
- appareilsArray.forEach(function (appliance) {
-  let listeItems = `
-      <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>
-      `;
-  filtreListeAppareils.innerHTML += listeItems;
+function handleAppareils() {
+ arrowboxAppareils.addEventListener("click", function () {
+  let index = 0;
+  filtreListeAppareils.style.display = "grid";
+
+  filtreListeAppareils.innerHTML = " ";
+  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
+  appareilsArray.forEach(function (appliance) {
+   let listeItems = `
+            <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>
+            `;
+   filtreListeAppareils.innerHTML += listeItems;
+  });
  });
- /*  arrowboxAppareils.addEventListener("click", function () {
-  filtreListeAppareils.innerHTML = "";
-  arrowDown(inputAppareils, arrowAppareils, arrowboxAppareils);
- }); */
-});
+}
+
+handleAppareils();
 
 filtreListeAppareils.addEventListener("click", function () {
  filtreListeAppareils.innerHTML = "";
@@ -214,6 +228,7 @@ filtreListeAppareils.addEventListener("click", function () {
 
 inputAppareils.addEventListener("keyup", function (event) {
  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
+ filtreListeAppareils.style.display = "grid";
  let value = document.getElementById("appareils").value;
  let result = appareilsArray.filter((appliance) =>
   appliance.toLowerCase().includes(value.toLowerCase())
@@ -228,6 +243,7 @@ inputAppareils.addEventListener("keyup", function (event) {
 });
 
 inputRecherche.addEventListener("keyup", function () {
+ filtreListeAppareils.style.display = "grid";
  for (let i = 3; i < inputRecherche.value.length; i++) {
   arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
   let valueRecherche = inputRecherche.value;
@@ -249,22 +265,22 @@ inputRecherche.addEventListener("keyup", function () {
 const arrowUstensils = document.getElementById("ustensil-arrow-id");
 const arrowboxUstensils = document.getElementById("ustensil-arrow");
 
-arrowboxUstensils.addEventListener("click", function () {
- let index = 0;
- filtreListeUstensils.innerHTML = " ";
+function handleUstensils() {
+ arrowboxUstensils.addEventListener("click", function () {
+  filtreListeUstensils.style.display = "grid";
+  filtreListeUstensils.innerHTML = " ";
 
- arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
- ustensilsArray.forEach(function (ustensils) {
-  let listeItems = `
-      <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>
-      `;
-  filtreListeUstensils.innerHTML += listeItems;
+  arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
+  ustensilsArray.forEach(function (ustensils) {
+   let listeItems = `
+            <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>
+            `;
+   filtreListeUstensils.innerHTML += listeItems;
+  });
  });
- /*  arrowboxUstensils.addEventListener("click", function () {
-  filtreListeUstensils.innerHTML = "";
-  arrowDown(inputIng, arrowUstensils, arrowboxUstensils);
- }); */
-});
+}
+
+handleUstensils();
 
 filtreListeUstensils.addEventListener("click", function () {
  filtreListeUstensils.innerHTML = "";
@@ -272,6 +288,7 @@ filtreListeUstensils.addEventListener("click", function () {
 });
 
 inputUstensils.addEventListener("keyup", function (event) {
+ filtreListeUstensils.style.display = "grid";
  arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
  let value = document.getElementById("ustensils").value;
  let result = ustensilsArray.filter((ustensil) =>
@@ -287,6 +304,7 @@ inputUstensils.addEventListener("keyup", function (event) {
 });
 
 inputRecherche.addEventListener("keyup", function (event) {
+ filtreListeUstensils.style.display = "grid";
  for (let i = 3; i < inputRecherche.value.length; i++) {
   arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
   let valueRecherche = inputRecherche.value;
@@ -322,27 +340,83 @@ function createDiv(value, style, idIndex) {
   idIndex +
   ')" class="fa-solid fa-xmark"></i></li>';
  containerItem.innerHTML += item;
- findArticlesArray.push(value);
+
+ filterRecipesElement(value);
 }
 
-function filterRecipesElement() {
- findArticlesArray.filter((elt) =>
-  elt.toLowerCase().includes(value.toLowerCase())
+function filterRecipesElement(value) {
+ const foundRecipes = recipes.filter((item) =>
+  item.name.toLowerCase().includes(value.toLowerCase())
  );
- ingredientsArray.filter((ingredient) =>
-  ingredient.toLowerCase().includes(value.toLowerCase())
+ const foundIngredients = recipes.filter((item) =>
+  item.ingredients.find((el) =>
+   el.ingredient.toLowerCase().includes(value.toLowerCase())
+  )
  );
- appareilsArray.filter((appliance) =>
-  appliance.toLowerCase().includes(value.toLowerCase())
+ const foundDescription = recipes.filter((item) =>
+  item.description.toLowerCase().includes(value.toLowerCase())
  );
- ustensilsArray.filter((ustensil) =>
-  ustensil.toLowerCase().includes(value.toLowerCase())
- );
+ const results = [
+  ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
+ ];
+ console.log(results);
+
+ recipesCards(results);
+
+ getIngredients(results);
+ handleIngredients();
+
+ getAppareils(results);
+ handleAppareils();
+
+ getUstensils(recipes);
+ handleUstensils();
 }
 
-function deleteDiv(element) {
+/* function deleteValue(value) {
+ const foundRecipes = !recipes.filter((item) =>
+  item.name.toLowerCase().includes(value.toLowerCase())
+ );
+ const foundIngredients = !recipes.filter((item) =>
+  item.ingredients.find((el) =>
+   el.ingredient.toLowerCase().includes(value.toLowerCase())
+  )
+ );
+ const foundDescription = !recipes.filter((item) =>
+  item.description.toLowerCase().includes(value.toLowerCase())
+ );
+ const results = [
+  ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
+ ];
+ console.log(results);
+
+ recipesCards(results);
+
+ getIngredients(results);
+ handleIngredients();
+
+ getAppareils(results);
+ handleAppareils();
+
+ getUstensils(results);
+ handleUstensils();
+} */
+
+function deleteDiv(element, value) {
  let elt = document.getElementById(element);
  elt.remove();
+ //deleteValue(value);
+ recipesCards(recipes);
+ recipesCards(recipes);
+
+ getIngredients(recipes);
+ handleIngredients();
+
+ getAppareils(recipes);
+ handleAppareils();
+
+ getUstensils(recipes);
+ handleUstensils();
 }
 
 /* Fonctions pour faire tourner les fleche des input + css des bordure des input */
@@ -357,4 +431,11 @@ function arrowDown(input, arrow, arrowbox) {
  arrow.style.transform = "rotate(360deg)";
  arrowbox.style.borderRadius = "0 5px 5px 0";
  input.style.borderRadius = "5px 0 0 5px";
+}
+
+function closeInputListe(arrowBoxName, listeName) {
+ arrowBoxName.addEventListener("click", function () {
+  listeName.style.display = "none";
+  listeName.innerHTML = " ";
+ });
 }

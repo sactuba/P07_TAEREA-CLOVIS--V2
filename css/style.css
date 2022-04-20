@@ -1,243 +1,253 @@
 * {
-  padding: 0;
-  margin: 0;
+ padding: 0;
+ margin: 0;
 }
 
 body {
-  margin: 0 100px;
+ margin: 0 100px;
 }
 
 .lato {
-  font-family: "Lato", sans-serif;
+ font-family: "Lato", sans-serif;
 }
 
 .roboto {
-  font-family: "Roboto", sans-serif;
+ font-family: "Roboto", sans-serif;
 }
 
 .bold {
-  font-weight: bold;
+ font-weight: bold;
 }
 
+#main {
+ z-index: 0;
+ position: absolute;
+ top: 340px;
+}
+#nav {
+ z-index: 2000;
+}
 /* HEADER */
 
 header {
 }
 
 .header--logo {
-  text-align: center;
+ text-align: center;
 }
 .fa-fire-burner {
-  color: #ed6454;
+ color: #ed6454;
 }
 .header--title {
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 47px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #d04f4f;
+ font-size: 36px;
+ font-style: normal;
+ font-weight: 700;
+ line-height: 47px;
+ letter-spacing: 0em;
+ text-align: center;
+ color: #d04f4f;
 }
 
 /* NAV */
 
 /* BARRE DE RECHERCHE */
 .barre-de-recherche {
-  display: flex;
+ display: flex;
 }
 
 .barre-de-recherche--input {
-  height: 70px;
-  width: 100%;
-  font-size: 18px;
-  text-indent: 10px;
-  border: none;
-  border-radius: 5px;
-  background: #e7e7e7;
-  margin: 20px 0;
+ height: 70px;
+ width: 100%;
+ font-size: 18px;
+ text-indent: 10px;
+ border: none;
+ border-radius: 5px;
+ background: #e7e7e7;
+ margin: 20px 0;
 }
 
 .barre-de-recherche--input::placeholder {
-  color: #000000;
-  font-size: 18px;
-  margin-left: 20px;
-  text-indent: 10px;
+ color: #000000;
+ font-size: 18px;
+ margin-left: 20px;
+ text-indent: 10px;
 }
 
 /* FILTRE */
 .liste-findArticles {
-  list-style: none;
-  display: flex;
+ list-style: none;
+ display: flex;
 }
 
 .liste-findArticles li {
-  display: flex;
-  border: none;
-  margin: 10px 10px 10px 0;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
+ display: flex;
+ border: none;
+ margin: 10px 10px 10px 0;
+ border-radius: 5px;
+ color: #fff;
+ font-size: 16px;
 }
 
 .ingredientItem {
-  background: #3282f7;
-  text-indent: 10px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+ background: #3282f7;
+ text-indent: 10px;
+ margin-bottom: 5px;
+ margin-top: 5px;
 }
 .appareilItem {
-  background: #68d9a4;
-  text-indent: 10px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+ background: #68d9a4;
+ text-indent: 10px;
+ margin-bottom: 5px;
+ margin-top: 5px;
 }
 .ustensilItem {
-  background: #ed6454;
-  text-indent: 10px;
-  margin-bottom: 5px;
-  margin-top: 5px;
+ background: #ed6454;
+ text-indent: 10px;
+ margin-bottom: 5px;
+ margin-top: 5px;
 }
 .filtre {
-  display: flex;
-  column-gap: 2%;
+ display: flex;
+ column-gap: 2%;
 }
 
 .filtre-container--input {
-  display: flex;
-  position: relative;
+ display: flex;
+ position: relative;
 }
 
 .fa-angle-down {
-  color: #fff;
-  margin-top: 50%;
-  transition-duration: 0.5s;
+ color: #fff;
+ margin-top: 50%;
+ transition-duration: 0.5s;
 }
 
 #ingredient-arrow {
-  background: #3282f7;
+ background: #3282f7;
 }
 
 #appareil-arrow {
-  background: #68d9a4;
+ background: #68d9a4;
 }
 
 #ustensil-arrow {
-  background: #ed6454;
+ background: #ed6454;
 }
 
 .input--filtre {
-  font-size: 20px;
-  height: 75px;
-  border: none;
-  border-radius: 5px 0 0 5px;
-  color: #fff;
+ font-size: 20px;
+ height: 75px;
+ border: none;
+ border-radius: 5px 0 0 5px;
+ color: #fff;
 }
 
 .input--filtre::placeholder {
-  color: #fff;
+ color: #fff;
 }
 
 .arrow-input {
-  width: 50px;
-  border-radius: 0 5px 5px 0;
-  text-align: center;
+ width: 50px;
+ border-radius: 0 5px 5px 0;
+ text-align: center;
 }
 
 #ingredients {
-  background: #3282f7;
-  width: 100%;
+ background: #3282f7;
+ width: 100%;
 }
 
 #appareils {
-  background: #68d9a4;
-  width: 100%;
+ background: #68d9a4;
+ width: 100%;
 }
 
 #ustensils {
-  background: #ed6454;
-  width: 100%;
+ background: #ed6454;
+ width: 100%;
 }
 
 .filtre-container {
-  position: relative;
-  z-index: 1;
+ position: relative;
+ z-index: 1;
 }
 
 .filtre-liste {
-  list-style: none;
-  display: grid;
-  border-radius: 0 0 5px 5px;
-  grid-template-columns: auto auto auto;
-  color: #fff;
-  width: 100%;
+ list-style: none;
+ display: none;
+ border-radius: 0 0 5px 5px;
+ grid-template-columns: auto auto auto;
+ color: #fff;
+ width: 100%;
 }
 #filtre-liste-ingredients {
-  background: #3282f7;
+ background: #3282f7;
 }
 #filtre-liste-appareils {
-  background: #68d9a4;
+ background: #68d9a4;
 }
 #filtre-liste-ustensils {
-  background: #ed6454;
+ background: #ed6454;
 }
 
 /* BODY */
 
 .recipes_container {
-  position: relative;
-  z-index: -1;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-top: 30px;
-  gap: 90px;
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ margin-top: 30px;
+ margin-right: 100px;
+ gap: 90px;
 }
 
 .recipes_cards {
-  display: flex;
-  flex-direction: column;
+ display: flex;
+ flex-direction: column;
 }
 
 .recipes_cards--image {
-  height: 200px;
-  background: #c7bebe;
-  border-radius: 3px;
+ height: 200px;
+ background: #c7bebe;
+ border-radius: 3px;
+ border-radius: 5px 5px 0 0;
 }
 .recipes_cards--description {
-  display: flex;
-  height: 170px;
-  background: #e7e7e7;
+ display: flex;
+ height: 170px;
+ background: #e7e7e7;
+ border-radius: 0 0 5px 5px;
+ font-size: 14px;
 }
 .--description__ingredients {
-  margin: 0 0 30px 30px;
-  width: 50%;
+ margin: 0 0 25px 25px;
+ width: 50%;
 }
 .--description__excplication {
-  margin: 0 30px 30px 0;
-  width: 50%;
-  overflow: hidden;
+ margin: 0 30px 41px 0;
+ width: 50%;
+ overflow: hidden;
 }
 
 .--description__ingredients--title {
-  font-size: 18px;
-  background: #e7e7e7;
-  display: flex;
-  justify-content: space-between;
+ font-size: 18px;
+ background: #e7e7e7;
+ display: flex;
+ justify-content: space-between;
 }
 
 .--description__ingredients--name {
-  margin: 30px 0 30px 30px;
+ margin: 30px 0 30px 30px;
 }
 .--description__excplication--timer {
-  text-align: center;
-  margin: 30px 30px 30px 0;
-  font-size: 20px;
+ text-align: center;
+ margin: 30px 30px 30px 0;
+ font-size: 20px;
 }
 
 .fa-clock {
-  margin-right: 10px;
+ margin-right: 10px;
 }
 
 .liste-description {
-  list-style: none;
+ list-style: none;
 }
