@@ -63,7 +63,7 @@ function getIngredients(recipes) {
   }
  }
  ingredientsArray = Array.from(new Set(ingredients));
- console.log(ingredientsArray);
+ //console.log(ingredientsArray);
 }
 
 getIngredients(recipes);
@@ -336,68 +336,60 @@ function createDiv(value, style) {
  filterRecipesElement();
 }
 
+let results = [];
+
+// Trier les recettes au clique sur un element des inputs
 function filterRecipesElement() {
- let results = [];
  criteriasArray.forEach((criteria) => {
-  if (isSearching == true) {
-   const foundRecipes = searchingRecipes.filter((item) =>
-    item.name.toLowerCase().includes(criteria.toLowerCase())
-   );
-   const foundIngredients = searchingRecipes.filter((item) =>
-    item.ingredients.find((el) =>
-     el.ingredient.toLowerCase().includes(criteria.toLowerCase())
-    )
-   );
-   const foundDescription = searchingRecipes.filter((item) =>
-    item.description.toLowerCase().includes(criteria.toLowerCase())
-   );
-   results = [
-    ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
-   ];
-   searchingRecipes = results;
-   console.log(isSearching);
-  } else {
-   const foundRecipes = recipes.filter((item) =>
-    item.name.toLowerCase().includes(criteria.toLowerCase())
-   );
-   const foundIngredients = recipes.filter((item) =>
-    item.ingredients.find((el) =>
-     el.ingredient.toLowerCase().includes(criteria.toLowerCase())
-    )
-   );
-   const foundDescription = recipes.filter((item) =>
-    item.description.toLowerCase().includes(criteria.toLowerCase())
-   );
-   results = [
-    ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
-   ];
-   searchingRecipes = results;
-   isSearching = true;
-   console.log(isSearching);
-  }
+  const foundRecipes = recipes.filter((item) =>
+   item.name.toLowerCase().includes(criteria.toLowerCase())
+  );
+  const foundIngredients = recipes.filter((item) =>
+   item.ingredients.find((el) =>
+    el.ingredient.toLowerCase().includes(criteria.toLowerCase())
+   )
+  );
+  const foundDescription = recipes.filter((item) =>
+   item.description.toLowerCase().includes(criteria.toLowerCase())
+  );
+  results = [
+   ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
+  ];
+
+  searchingRecipes = results;
  });
- console.log(searchingRecipes);
- console.log(criteriasArray);
+ if (criteriasArray.length === 0) {
+  recipesCards(recipes);
 
- recipesCards(searchingRecipes);
+  getIngredients(recipes);
+  handleIngredients();
 
- getIngredients(searchingRecipes);
- handleIngredients();
+  getAppareils(recipes);
+  handleAppareils();
 
- getAppareils(searchingRecipes);
- handleAppareils();
+  getUstensils(recipes);
+  handleUstensils();
+ } else {
+  recipesCards(searchingRecipes);
 
- getUstensils(searchingRecipes);
- handleUstensils();
+  getIngredients(searchingRecipes);
+  handleIngredients();
+
+  getAppareils(searchingRecipes);
+  handleAppareils();
+
+  getUstensils(searchingRecipes);
+  handleUstensils();
+ }
 }
 
 function deleteDiv(value) {
  let elt = document.getElementById(value);
  elt.remove();
  criteriasArray = criteriasArray.filter((elt) => elt !== value);
- ingredientsArray.filter((elt) => elt !== value);
- console.log(ingredientsArray);
  filterRecipesElement();
+ console.log(criteriasArray);
+ console.log(searchingRecipes);
 }
 
 /* Fonctions pour faire tourner les fleche des input + css des bordure des input */
