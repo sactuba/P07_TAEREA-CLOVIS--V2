@@ -63,7 +63,6 @@ function getIngredients(recipes) {
   }
  }
  ingredientsArray = Array.from(new Set(ingredients));
- //console.log(ingredientsArray);
 }
 
 getIngredients(recipes);
@@ -146,19 +145,19 @@ function handleIngredients() {
   filtreListeIngredients.style.display = "grid";
   filtreListeIngredients.innerHTML = " ";
   arrowUp(inputIng, arrowIng, arrowboxIng);
-  ingredientsArray.forEach(function (ingredient) {
+  for (let i = 0; i < ingredientsArray.length; i++) {
    let listeItems = `
-                 <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem', ${index++})">${ingredient}</li>
-                 `;
+                <li class="ingredientItem" value="${
+                 ingredientsArray[i]
+                }" onclick="createDiv('${
+    ingredientsArray[i]
+   }', 'ingredientItem', ${index++})">${ingredientsArray[i]}</li>
+                `;
+   console.log(ingredientsArray[i]);
    filtreListeIngredients.innerHTML += listeItems;
-  });
+  }
  });
 }
-
-/* document.getElementById("main").onclick = closeInputListe(
- arrowboxIng,
- filtreListeIngredients
-); */
 
 handleIngredients();
 
@@ -209,17 +208,16 @@ const arrowboxAppareils = document.getElementById("appareil-arrow");
 
 function handleAppareils() {
  arrowboxAppareils.addEventListener("click", function () {
-  let index = 0;
   filtreListeAppareils.style.display = "grid";
 
   filtreListeAppareils.innerHTML = " ";
   arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
-  appareilsArray.forEach(function (appliance) {
+  for (let i = 0; i < appareilsArray.length; i++) {
    let listeItems = `
-            <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>
-            `;
+             <li class="appareilItem" value="${appareilsArray[i]}" onclick="createDiv('${appareilsArray[i]}', 'appareilItem')">${appareilsArray[i]}</li>
+             `;
    filtreListeAppareils.innerHTML += listeItems;
-  });
+  }
  });
 }
 
@@ -275,12 +273,12 @@ function handleUstensils() {
   filtreListeUstensils.innerHTML = " ";
 
   arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
-  ustensilsArray.forEach(function (ustensils) {
+  for (let i = 0; i < ustensilsArray.length; i++) {
    let listeItems = `
-            <li class="ustensilItem" value="${ustensils}" onclick="createDiv('${ustensils}', 'ustensilItem')">${ustensils}</li>
-            `;
+              <li class="ustensilItem" value="${ustensilsArray[i]}" onclick="createDiv('${ustensilsArray[i]}', 'ustensilItem')">${ustensilsArray[i]}</li>
+              `;
    filtreListeUstensils.innerHTML += listeItems;
-  });
+  }
  });
 }
 
@@ -393,22 +391,3 @@ function deleteDiv(value) {
 }
 
 /* Fonctions pour faire tourner les fleche des input + css des bordure des input */
-
-function arrowUp(input, arrow, arrowbox) {
- arrow.style.transform = "rotate(180deg)";
- arrowbox.style.borderRadius = "0 5px 0 0";
- input.style.borderRadius = "5px 0 0 0";
-}
-
-function arrowDown(input, arrow, arrowbox) {
- arrow.style.transform = "rotate(360deg)";
- arrowbox.style.borderRadius = "0 5px 5px 0";
- input.style.borderRadius = "5px 0 0 5px";
-}
-
-function closeInputListe(arrowBoxName, listeName) {
- arrowBoxName.addEventListener("click", function () {
-  listeName.style.display = "none";
-  listeName.innerHTML = " ";
- });
-}
