@@ -1,7 +1,4 @@
-let ingredientsArrayV2 = [];
-let appareilsArrayV2 = [];
-let ustensilsArrayV2 = [];
-let findArticlesArrayV2 = [];
+
 
 function getIngredientsV2() {
  let ing = recipes.map((recipe) => recipe.ingredients);
@@ -120,3 +117,104 @@ function handleUstensilsV2() {
  });
 }
 //handleUstensilsV2()
+
+inputIng.addEventListener("keyup", function () {
+  arrowUp(inputIng, arrowIng, arrowboxIng);
+  filtreListeIngredients.style.display = "grid";
+  let value = document.getElementById("ingredients").value;
+  let result = ingredientsArray.filter((ingredient) =>
+   ingredient.toLowerCase().includes(value.toLowerCase())
+  );
+  filtreListeIngredients.innerHTML = " ";
+  result.forEach(function (ingredient) {
+   let listeItems = `
+   <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
+   filtreListeIngredients.innerHTML += listeItems;
+  });
+ });
+
+ inputRecherche.addEventListener("keyup", function () {
+  filtreListeIngredients.style.display = "grid";
+  for (let i = 3; i < inputRecherche.value.length; i++) {
+   arrowUp(inputIng, arrowIng, arrowboxIng);
+   let valueRecherche = inputRecherche.value;
+   let result = ingredientsArray.filter((ingredient) =>
+    ingredient.toLowerCase().includes(valueRecherche.toLowerCase())
+   );
+ 
+   filtreListeIngredients.innerHTML = " ";
+   result.forEach(function (ingredient) {
+    let listeItems = `
+          <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
+    filtreListeIngredients.innerHTML += listeItems;
+   });
+  }
+ });
+
+ inputAppareils.addEventListener("keyup", function (event) {
+  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
+  filtreListeAppareils.style.display = "grid";
+  let value = document.getElementById("appareils").value;
+  let result = appareilsArray.filter((appliance) =>
+   appliance.toLowerCase().includes(value.toLowerCase())
+  );
+ 
+  filtreListeAppareils.innerHTML = " ";
+  result.forEach(function (appliance) {
+   let listeItems = `
+   <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
+   filtreListeAppareils.innerHTML += listeItems;
+  });
+ });
+
+ inputRecherche.addEventListener("keyup", function () {
+  filtreListeAppareils.style.display = "grid";
+  for (let i = 3; i < inputRecherche.value.length; i++) {
+   arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
+   let valueRecherche = inputRecherche.value;
+   let result = appareilsArray.filter((appliance) =>
+    appliance.toLowerCase().includes(valueRecherche.toLowerCase())
+   );
+ 
+   filtreListeAppareils.innerHTML = " ";
+   result.forEach(function (appliance) {
+    let listeItems = `
+          <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
+    filtreListeAppareils.innerHTML += listeItems;
+   });
+  }
+ });
+
+ inputUstensils.addEventListener("keyup", function (event) {
+  filtreListeUstensils.style.display = "grid";
+  arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
+  let value = document.getElementById("ustensils").value;
+  let result = ustensilsArray.filter((ustensil) =>
+   ustensil.toLowerCase().includes(value.toLowerCase())
+  );
+ 
+  filtreListeUstensils.innerHTML = " ";
+  result.forEach(function (ustensil) {
+   let listeItems = `
+   <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
+   filtreListeUstensils.innerHTML += listeItems;
+  });
+ });
+
+ inputRecherche.addEventListener("keyup", function (event) {
+  filtreListeUstensils.style.display = "grid";
+  for (let i = 3; i < inputRecherche.value.length; i++) {
+   arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
+   let valueRecherche = inputRecherche.value;
+   let result = ustensilsArray.filter((ustensil) =>
+    ustensil.toLowerCase().includes(valueRecherche.toLowerCase())
+   );
+ 
+   filtreListeUstensils.innerHTML = " ";
+   result.forEach(function (ustensil) {
+    let listeItems = `
+          <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
+    filtreListeUstensils.innerHTML += listeItems;
+   });
+  }
+ });

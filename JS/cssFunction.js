@@ -16,3 +16,19 @@ function closeInputListe(arrowBoxName, listeName) {
   listeName.innerHTML = " ";
  });
 }
+
+filtreListeIngredients.addEventListener("click", function () {
+ filtreListeIngredients.style.display = "none";
+ filtreListeIngredients.innerHTML = " ";
+ arrowDown(inputIng, arrowIng, arrowboxIng);
+});
+
+filtreListeAppareils.addEventListener("click", function () {
+ filtreListeAppareils.innerHTML = "";
+ arrowDown(inputAppareils, arrowAppareils, arrowboxAppareils);
+});
+
+filtreListeUstensils.addEventListener("click", function () {
+ filtreListeUstensils.innerHTML = "";
+ arrowDown(inputUstensils, arrowUstensils, arrowboxUstensils);
+});

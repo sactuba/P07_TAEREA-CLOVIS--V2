@@ -1,57 +1,4 @@
-/* Accés aux input */
 
-const inputIng = document.getElementById("ingredients");
-const inputAppareils = document.getElementById("appareils");
-const inputUstensils = document.getElementById("ustensils");
-const inputRecherche = document.getElementById("barre-de-recherche");
-
-/* Accés aux value */
-const inputIngValue = document.getElementById("ingredients").value;
-const inputAppareilsValue = document.getElementById("appareils").value;
-const inputUstensilsValue = document.getElementById("ustensils").value;
-const inputRechercheValue = document.getElementById("barre-de-recherche").value;
-
-/* Accés aux container des input */
-
-const ingredientContainer = document.getElementById(
- "filtre-container-ingredients"
-);
-const appareilsContainer = document.getElementById(
- "filtre-container-appareils"
-);
-const ustensilsContainer = document.getElementById(
- "filtre-container-ustensils"
-);
-
-let ingredientsArray = [];
-let appareilsArray = [];
-let ustensilsArray = [];
-let findArticlesArray = [];
-
-let ingredients = [];
-let appliance = [];
-let ustensils = [];
-
-let searchingRecipes = [];
-let isSearching = false;
-let criteriasArray = [];
-
-const filtreListeIngredients = document.getElementById(
- "filtre-liste-ingredients"
-);
-const filtreListeAppareils = document.getElementById("filtre-liste-appareils");
-const filtreListeUstensils = document.getElementById("filtre-liste-ustensils");
-
-/* const listeIngredients = document.getElementById("filtre-liste-ingredients");
-const listeAppareils = document.getElementById("filtre-liste-appareils");
-const listeUstensils = document.getElementById("filtre-liste-ustensils"); */
-
-const ingredientItem = document.getElementsByClassName("ingredientItem");
-const appareilItem = document.getElementsByClassName("appareilItem");
-const ustensilItem = document.getElementsByClassName("ustensilItem");
-
-/* Accés a la liste des input valider */
-const findArticles = document.getElementById("liste-findArticles");
 
 /* tableaux des ingredients sans doublon */
 
@@ -136,8 +83,7 @@ function recipesCards(recipes) {
 
 recipesCards(recipes);
 
-const arrowIng = document.getElementById("ingredient-arrow-id");
-const arrowboxIng = document.getElementById("ingredient-arrow");
+
 
 function handleIngredients() {
  arrowboxIng.addEventListener("click", function () {
@@ -161,12 +107,6 @@ function handleIngredients() {
 
 handleIngredients();
 
-filtreListeIngredients.addEventListener("click", function () {
- filtreListeIngredients.style.display = "none";
- filtreListeIngredients.innerHTML = " ";
- arrowDown(inputIng, arrowIng, arrowboxIng);
-});
-
 /* Recherche des ingredients avec la barre de recherche */
 
 inputIng.addEventListener("keyup", function () {
@@ -176,12 +116,13 @@ inputIng.addEventListener("keyup", function () {
  let result = ingredientsArray.filter((ingredient) =>
   ingredient.toLowerCase().includes(value.toLowerCase())
  );
+ console.log(result);
  filtreListeIngredients.innerHTML = " ";
- result.forEach(function (ingredient) {
+ for (let i = 0; i < result.length; i++) {
   let listeItems = `
-  <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
+    <li class="ingredientItem" value="${result[i]}" onclick="createDiv('${result[i]}', 'ingredientItem')">${result[i]}</li>`;
   filtreListeIngredients.innerHTML += listeItems;
- });
+ }
 });
 
 inputRecherche.addEventListener("keyup", function () {
@@ -194,11 +135,11 @@ inputRecherche.addEventListener("keyup", function () {
   );
 
   filtreListeIngredients.innerHTML = " ";
-  result.forEach(function (ingredient) {
+  for (let i = 0; i < result.length; i++) {
    let listeItems = `
-         <li class="ingredientItem" value="${ingredient}" onclick="createDiv('${ingredient}', 'ingredientItem')">${ingredient}</li>`;
+          <li class="ingredientItem" value="${result[i]}" onclick="createDiv('${result[i]}', 'ingredientItem')">${result[i]}</li>`;
    filtreListeIngredients.innerHTML += listeItems;
-  });
+  }
  }
 });
 
@@ -223,11 +164,6 @@ function handleAppareils() {
 
 handleAppareils();
 
-filtreListeAppareils.addEventListener("click", function () {
- filtreListeAppareils.innerHTML = "";
- arrowDown(inputAppareils, arrowAppareils, arrowboxAppareils);
-});
-
 inputAppareils.addEventListener("keyup", function (event) {
  arrowUp(inputAppareils, arrowAppareils, arrowboxAppareils);
  filtreListeAppareils.style.display = "grid";
@@ -237,11 +173,11 @@ inputAppareils.addEventListener("keyup", function (event) {
  );
 
  filtreListeAppareils.innerHTML = " ";
- result.forEach(function (appliance) {
+ for (let i = 0; i < result.length; i++) {
   let listeItems = `
-  <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
+  <li class="appareilItem" value="${result[i]}" onclick="createDiv('${result[i]}', 'appareilItem')">${result[i]}</li>`;
   filtreListeAppareils.innerHTML += listeItems;
- });
+ }
 });
 
 inputRecherche.addEventListener("keyup", function () {
@@ -254,11 +190,11 @@ inputRecherche.addEventListener("keyup", function () {
   );
 
   filtreListeAppareils.innerHTML = " ";
-  result.forEach(function (appliance) {
+  for (leti = 0; i < result.length; i++) {
    let listeItems = `
-         <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
+          <li class="appareilItem" value="${appliance}" onclick="createDiv('${appliance}', 'appareilItem')">${appliance}</li>`;
    filtreListeAppareils.innerHTML += listeItems;
-  });
+  }
  }
 });
 
@@ -284,11 +220,6 @@ function handleUstensils() {
 
 handleUstensils();
 
-filtreListeUstensils.addEventListener("click", function () {
- filtreListeUstensils.innerHTML = "";
- arrowDown(inputUstensils, arrowUstensils, arrowboxUstensils);
-});
-
 inputUstensils.addEventListener("keyup", function (event) {
  filtreListeUstensils.style.display = "grid";
  arrowUp(inputUstensils, arrowUstensils, arrowboxUstensils);
@@ -298,11 +229,11 @@ inputUstensils.addEventListener("keyup", function (event) {
  );
 
  filtreListeUstensils.innerHTML = " ";
- result.forEach(function (ustensil) {
+ for (let i = 0; i < result.length; i++) {
   let listeItems = `
-  <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
+   <li class="ustensilItem" value="${result[i]}" onclick="createDiv('${result[i]}', 'ustensilItem')">${result[i]}</li>`;
   filtreListeUstensils.innerHTML += listeItems;
- });
+ }
 });
 
 inputRecherche.addEventListener("keyup", function (event) {
@@ -315,79 +246,10 @@ inputRecherche.addEventListener("keyup", function (event) {
   );
 
   filtreListeUstensils.innerHTML = " ";
-  result.forEach(function (ustensil) {
+  for (let i = 0; i < result.length; i++) {
    let listeItems = `
-         <li class="ustensilItem" value="${ustensil}" onclick="createDiv('${ustensil}', 'ustensilItem')">${ustensil}</li>`;
+          <li class="ustensilItem" value="${result[i]}" onclick="createDiv('${result[i]}', 'ustensilItem')">${result[i]}</li>`;
    filtreListeUstensils.innerHTML += listeItems;
-  });
+  }
  }
 });
-
-/* Fonction pour afficher les items de recherche et les suprimez */
-let indexArticles = 0;
-function createDiv(value, style) {
- let containerItem = document.getElementById("liste-findArticles");
- const item = `
- <li id="${value}"class="lato ${style}"value="${value}">${value}<i onclick="deleteDiv('${value}')" class="fa-solid fa-xmark"></i></li>`;
- containerItem.innerHTML += item;
- criteriasArray.push(value);
- filterRecipesElement();
-}
-
-let results = [];
-
-// Trier les recettes au clique sur un element des inputs
-function filterRecipesElement() {
- criteriasArray.forEach((criteria) => {
-  const foundRecipes = recipes.filter((item) =>
-   item.name.toLowerCase().includes(criteria.toLowerCase())
-  );
-  const foundIngredients = recipes.filter((item) =>
-   item.ingredients.find((el) =>
-    el.ingredient.toLowerCase().includes(criteria.toLowerCase())
-   )
-  );
-  const foundDescription = recipes.filter((item) =>
-   item.description.toLowerCase().includes(criteria.toLowerCase())
-  );
-  results = [
-   ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
-  ];
-
-  searchingRecipes = results;
- });
- if (criteriasArray.length === 0) {
-  recipesCards(recipes);
-
-  getIngredients(recipes);
-  handleIngredients();
-
-  getAppareils(recipes);
-  handleAppareils();
-
-  getUstensils(recipes);
-  handleUstensils();
- } else {
-  recipesCards(searchingRecipes);
-
-  getIngredients(searchingRecipes);
-  handleIngredients();
-
-  getAppareils(searchingRecipes);
-  handleAppareils();
-
-  getUstensils(searchingRecipes);
-  handleUstensils();
- }
-}
-
-function deleteDiv(value) {
- let elt = document.getElementById(value);
- elt.remove();
- criteriasArray = criteriasArray.filter((elt) => elt !== value);
- filterRecipesElement();
- console.log(criteriasArray);
- console.log(searchingRecipes);
-}
-
-/* Fonctions pour faire tourner les fleche des input + css des bordure des input */
