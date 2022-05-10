@@ -32,7 +32,7 @@ let ingredientsArrayV2 = [];
 let appareilsArrayV2 = [];
 let ustensilsArrayV2 = [];
 let findArticlesArrayV2 = [];
-  
+
 let ingredients = [];
 let appliance = [];
 let ustensils = [];
@@ -40,6 +40,11 @@ let ustensils = [];
 let searchingRecipes = [];
 let isSearching = false;
 let criteriasArray = [];
+
+/* Afficher les recettes */
+let cardsIngredientsArray = [];
+let cardsAppareilArray = [];
+let cardsUstensilsArray = [];
 
 const filtreListeIngredients = document.getElementById(
  "filtre-liste-ingredients"
@@ -54,10 +59,13 @@ const ustensilItem = document.getElementsByClassName("ustensilItem");
 /* Accés a la liste des input valider */
 const findArticles = document.getElementById("liste-findArticles");
 
-
+/* Accés aux fleches des input valider */
 const arrowIng = document.getElementById("ingredient-arrow-id");
 const arrowboxIng = document.getElementById("ingredient-arrow");
-
+const arrowAppareils = document.getElementById("appareil-arrow-id");
+const arrowboxAppareils = document.getElementById("appareil-arrow");
+const arrowUstensils = document.getElementById("ustensil-arrow-id");
+const arrowboxUstensils = document.getElementById("ustensil-arrow");
 
 /* Fonction pour afficher les items de recherche et les suprimez */
 function createDiv(value, style) {

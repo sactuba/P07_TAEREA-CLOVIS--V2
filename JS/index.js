@@ -1,5 +1,3 @@
-
-
 /* tableaux des ingredients sans doublon */
 
 function getIngredients(recipes) {
@@ -39,11 +37,6 @@ function getUstensils(recipes) {
 
 getUstensils(recipes);
 
-/* Afficher les recettes */
-let cardsIngredientsArray = [];
-let cardsAppareilArray = [];
-let cardsUstensilsArray = [];
-
 function recipesCards(recipes) {
  let container = document.getElementById("recipes_container");
  container.innerHTML = "";
@@ -82,8 +75,6 @@ function recipesCards(recipes) {
 }
 
 recipesCards(recipes);
-
-
 
 function handleIngredients() {
  arrowboxIng.addEventListener("click", function () {
@@ -144,8 +135,6 @@ inputRecherche.addEventListener("keyup", function () {
 });
 
 /* Fonctions  pour l'input des appareils */
-const arrowAppareils = document.getElementById("appareil-arrow-id");
-const arrowboxAppareils = document.getElementById("appareil-arrow");
 
 function handleAppareils() {
  arrowboxAppareils.addEventListener("click", function () {
@@ -199,9 +188,6 @@ inputRecherche.addEventListener("keyup", function () {
 });
 
 /* Fonctions  pour l'input des ustensils */
-
-const arrowUstensils = document.getElementById("ustensil-arrow-id");
-const arrowboxUstensils = document.getElementById("ustensil-arrow");
 
 function handleUstensils() {
  arrowboxUstensils.addEventListener("click", function () {
