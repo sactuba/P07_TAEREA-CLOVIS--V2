@@ -239,3 +239,65 @@ inputRecherche.addEventListener("keyup", function (event) {
   }
  }
 });
+
+function filterRecipesElement() {
+ criteriasArray.forEach((criteria) => {
+  const foundRecipes = recipes.filter((item) =>
+   item.name.toLowerCase().includes(criteria.toLowerCase())
+  );
+  const foundIngredients = recipes.filter((item) =>
+   item.ingredients.find((el) =>
+    el.ingredient.toLowerCase().includes(criteria.toLowerCase())
+   )
+  );
+  const foundDescription = recipes.filter((item) =>
+   item.description.toLowerCase().includes(criteria.toLowerCase())
+  );
+  results = [
+   ...new Set([...foundRecipes, ...foundIngredients, ...foundDescription]),
+  ];
+
+  searchingRecipes = results;
+ });
+ if (criteriasArray.length === 0) {
+  recipesCards(recipes);
+
+  getIngredients(recipes);
+  handleIngredients();
+
+  getAppareils(recipes);
+  handleAppareils();
+
+  getUstensils(recipes);
+  handleUstensils();
+ } else {
+  recipesCards(searchingRecipes);
+
+  getIngredients(searchingRecipes);
+  handleIngredients();
+
+  getAppareils(searchingRecipes);
+  handleAppareils();
+
+  getUstensils(searchingRecipes);
+  handleUstensils();
+ }
+}
+
+function deleteDiv(value) {
+ let elt = document.getElementById(value);
+ elt.remove();
+ criteriasArray = criteriasArray.filter((elt) => elt !== value);
+ filterRecipesElement();
+ console.log(criteriasArray);
+ console.log(searchingRecipes);
+}
+
+function createDiv(value, style) {
+ let containerItem = document.getElementById("liste-findArticles");
+ const item = `
+     <li id="${value}"class="lato ${style}"value="${value}">${value}<i onclick="deleteDiv('${value}')" class="fa-solid fa-xmark"></i></li>`;
+ containerItem.innerHTML += item;
+ criteriasArray.push(value);
+ filterRecipesElement();
+}
