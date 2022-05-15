@@ -1,30 +1,33 @@
 function getIngredientsV2(recipes) {
+ let ingredientsV2 = [];
  recipes.forEach((recipe) => {
   let ings = recipe.ingredients;
   ings.forEach((ing) => {
-   ingredientsArrayV2.push(ing.ingredient.toLowerCase());
+   ingredientsV2.push(ing.ingredient.toLowerCase());
   });
  });
- ingredientsArrayV2 = Array.from(new Set(ingredientsArrayV2));
+ ingredientsArrayV2 = Array.from(new Set(ingredientsV2));
  console.log(ingredientsArrayV2);
 }
 getIngredientsV2(recipes);
 
 function getAppareilsV2(recipes) {
+ let applianceV2 = [];
  recipes.forEach((recipe) => {
-  appareilsArrayV2.push(recipe.appliance.toLowerCase());
+  applianceV2.push(recipe.appliance.toLowerCase());
  });
- appareilsArrayV2 = Array.from(new Set(appareilsArrayV2));
+ appareilsArrayV2 = Array.from(new Set(applianceV2));
 }
 getAppareilsV2(recipes);
 
 function getUstensilsV2(recipes) {
+ let ustensilsV2 = [];
  recipes.forEach((recipe) => {
   recipe.ustensils.forEach((ustensil) => {
-   ustensilsArrayV2.push(ustensil);
+   ustensilsV2.push(ustensil);
   });
  });
- ustensilsArrayV2 = Array.from(new Set(ustensilsArrayV2));
+ ustensilsArrayV2 = Array.from(new Set(ustensilsV2));
 }
 getUstensilsV2(recipes);
 
@@ -260,6 +263,8 @@ function filterRecipesElementV2() {
 
   getUstensilsV2(searchingRecipesV2);
   handleUstensilsV2();
+  console.log(ingredientsArrayV2);
+  console.log(searchingRecipesV2);
  }
 }
 

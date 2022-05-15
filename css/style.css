@@ -203,17 +203,20 @@ header {
 .recipes_cards {
  display: flex;
  flex-direction: column;
+ border: 1px solid black;
+ height: 500px;
+ width: 100%;
 }
 
 .recipes_cards--image {
- height: 200px;
+ height: 50%;
  background: #c7bebe;
  border-radius: 3px;
  border-radius: 5px 5px 0 0;
 }
 .recipes_cards--description {
  display: flex;
- height: 170px;
+ height: 35%;
  background: #e7e7e7;
  border-radius: 0 0 5px 5px;
  font-size: 14px;
@@ -225,27 +228,28 @@ header {
 .--description__excplication {
  margin: 0 30px 41px 0;
  width: 50%;
+ height: 50%;
  overflow: hidden;
 }
 
 .--description__ingredients--title {
  font-size: 18px;
+ height: 15%;
  background: #e7e7e7;
  display: flex;
  justify-content: space-between;
 }
 
 .--description__ingredients--name {
- margin: 30px 0 30px 30px;
+ /* margin: 30px 0 30px 30px; */
 }
 .--description__excplication--timer {
  text-align: center;
- margin: 30px 30px 30px 0;
- font-size: 20px;
+ /* margin: 30px 30px 30px 0; */
 }
 
 .fa-clock {
- margin-right: 10px;
+ /* margin-right: 10px; */
 }
 
 .liste-description {
