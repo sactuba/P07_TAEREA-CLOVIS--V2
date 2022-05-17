@@ -237,7 +237,6 @@ function filterRecipesElementV2() {
     ...foundDescriptionV2,
    ]),
   ];
-
   searchingRecipesV2 = resultsV2;
   console.log(searchingRecipesV2);
  });
