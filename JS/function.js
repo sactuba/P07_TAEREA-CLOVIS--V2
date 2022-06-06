@@ -1,5 +1,6 @@
 /* Accés aux input */
-
+const recipesArray = recipes;
+const recipesLength = recipes.length;
 const inputIng = document.getElementById("ingredients");
 const inputAppareils = document.getElementById("appareils");
 const inputUstensils = document.getElementById("ustensils");
@@ -14,13 +15,13 @@ const inputRechercheValue = document.getElementById("barre-de-recherche").value;
 /* Accés aux container des input */
 
 const ingredientContainer = document.getElementById(
- "filtre-container-ingredients"
+  "filtre-container-ingredients"
 );
 const appareilsContainer = document.getElementById(
- "filtre-container-appareils"
+  "filtre-container-appareils"
 );
 const ustensilsContainer = document.getElementById(
- "filtre-container-ustensils"
+  "filtre-container-ustensils"
 );
 
 let ingredientsArray = [];
@@ -43,13 +44,12 @@ let criteriasArray = [];
 let searchingRecipesV2 = [];
 let criteriasArrayV2 = [];
 
-/* Afficher les recettes */
 let cardsIngredientsArray = [];
 let cardsAppareilArray = [];
 let cardsUstensilsArray = [];
 
 const filtreListeIngredients = document.getElementById(
- "filtre-liste-ingredients"
+  "filtre-liste-ingredients"
 );
 const filtreListeAppareils = document.getElementById("filtre-liste-appareils");
 const filtreListeUstensils = document.getElementById("filtre-liste-ustensils");
@@ -69,17 +69,5 @@ const arrowboxAppareils = document.getElementById("appareil-arrow");
 const arrowUstensils = document.getElementById("ustensil-arrow-id");
 const arrowboxUstensils = document.getElementById("ustensil-arrow");
 
-/* Fonction pour afficher les items de recherche et les suprimez */
-
-
-
 let results = [];
 let resultsV2 = [];
-
-// Trier les recettes au clique sur un element des inputs
-
-
-
-
-
-

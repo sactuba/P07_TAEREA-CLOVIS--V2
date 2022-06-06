@@ -86,6 +86,7 @@ header {
  border-radius: 5px;
  color: #fff;
  font-size: 16px;
+ height: 30px;
 }
 
 .ingredientItem {
